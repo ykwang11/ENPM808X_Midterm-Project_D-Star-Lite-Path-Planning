@@ -19,19 +19,6 @@ matrix:
             - cmake
             - cmake-data
       env: COMPILER=g++-5
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.8
-            - george-edison55-precise-backports
-          packages:
-            - clang-3.8
-            - cmake
-            - cmake-data
-      env: COMPILER=clang++-3.8
 
 before_install:
   - pip install --user cpp-coveralls
