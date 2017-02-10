@@ -29,7 +29,7 @@ script:
   - cd build
   - cmake ..
   - make
-  - ./test/cpp_test
+  - test/cpp_test
 
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
