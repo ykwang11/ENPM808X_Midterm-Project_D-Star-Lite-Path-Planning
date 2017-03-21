@@ -14,6 +14,8 @@ int AnalogSensor::Read() {
 
   double result = std::accumulate(readings->begin(), readings->end(), 0.0)
       / readings->size();
+
+  delete readings;
   return result;
 }
 
