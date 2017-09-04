@@ -11,7 +11,7 @@ Simple starter C++ project with:
 - googletest
 
 ## Standard install via command-line
-
+```
 git clone --recursive https://github.com/dpiet/cpp-boilerplate
 cd <path to repository>
 mkdir build
@@ -20,7 +20,7 @@ cmake ..
 make
 Run tests: ./test/cpp-test
 Run program: ./app/shell-app
-
+```
 ## Working with Eclipse IDE ##
 
 ## Installation
