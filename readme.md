@@ -38,7 +38,7 @@ In your work directory, use cmake to create an Eclipse project for an [out-of-so
 cd ~/workspace
 mkdir -p boilerplate-eclipse
 cd boilerplate-eclipse
-cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug ../cpp-boilerplate/
+cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../cpp-boilerplate/
 ```
 
 ## Import
