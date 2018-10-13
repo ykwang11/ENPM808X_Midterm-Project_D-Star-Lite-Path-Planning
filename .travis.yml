@@ -2,6 +2,10 @@
 sudo: required
 dist: trusty
 
+# Add token
+service_name: travis-pro
+repo_token: EAMa6yRqU8kylm8Mj5MQWQfr41zQkFskS
+
 # Modern cpp settings from
 #  http://genbattle.bitbucket.org/blog/2016/01/17/c++-travis-ci/
 language: cpp
