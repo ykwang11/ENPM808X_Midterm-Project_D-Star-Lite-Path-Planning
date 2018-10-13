@@ -1,3 +1,5 @@
+// Copyright [2018] <Yu-Kai Wang>
+
 #include <gtest/gtest.h>
 
 int main(int argc, char** argv) {
