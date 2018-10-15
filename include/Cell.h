@@ -1,17 +1,24 @@
+// Copyright [2018] <Yu-Kai Wang>
 // Cell.h
-#pragma once
+#ifndef INCLUDE_CELL_H_
+#define INCLUDE_CELL_H_
 
-class Cell
-{
-public:
-	Cell();
-	~Cell();
-	double CurrentG() const;
-	double CurrentRhs() const;
-	void UpdateG(double);
-	void UpdateRhs(double);
+#include <string>
 
-private:
-	double g = 10000; // Initialized to infinity
-	double rhs = 10000; // Initialized to infinity
+class Cell{
+ public:
+    explicit Cell(const double &);
+    double CurrentG() const;
+    double CurrentRhs() const;
+    std::string CurrentStatus() const;
+    void UpdateG(const double &);
+    void UpdateRhs(const double &);
+    void UpdateStatus(const std::string &);
+
+ private:
+    double g = 0;
+    double rhs = 0;
+    std::string status = "";
 };
+
+#endif  // INCLUDE_CELL_H_
