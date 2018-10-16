@@ -9,7 +9,7 @@
 ## Licence
 * MIT Licence  
 
-'''
+```
 Copyright (c) 2018 Yu-Kai Wang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,14 +29,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-'''
+```
 
 ---
 ## Install via Command-line  
 
 Clone from the repository, create build folder and build program.  
   
-'''
+```
 git clone --recursive https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning.git  
 cd ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning  
 mkdir build  
@@ -45,7 +45,7 @@ cmake ..
 make  
 Run tests: ./test/cpp-test  
 Run program: ./app/shell-app
-'''
+```
 
 ---
 ## SIP Process
