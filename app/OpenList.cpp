@@ -1,9 +1,25 @@
-// Copyright [2018] <Yu-Kai Wang>
+/**
+ * @file OpenList.cpp
+ * @author Yu-Kai Wang
+ * @copyright MIT License
+ *
+ * @brief D* Lite Path Planning
+ *
+ * @section Description
+ *
+ * This class saves candidate nodes to search in minimum heap data structure.
+ * 
+ */
 
 #include "OpenList.h"
 #include <algorithm>
 #include <functional>
 
+/**
+ * @brief Inset a node in the open list.
+ * @param a candidate node's priority in searching and its position
+ * @return none
+ */
 void OpenList::Insert(const double &new_key,
                       const std::pair<int, int> &new_node) {
     priority_queue.push_back(std::make_tuple(
@@ -12,6 +28,11 @@ void OpenList::Insert(const double &new_key,
                    priority_queue.end(), std::greater<>());
 }
 
+/**
+ * @brief Update the key of node in the open list.
+ * @param a candidate node's new priority in searching and its position
+ * @return none
+ */
 void OpenList::UpdateKey(const double &new_key,
                          const std::pair<int, int> &position) {
     for (auto &node : priority_queue) {
@@ -23,8 +44,13 @@ void OpenList::UpdateKey(const double &new_key,
     }
     std::make_heap(priority_queue.begin(),
                    priority_queue.end(), std::greater<>());
-}  // could be optimized
+}
 
+/**
+ * @brief Remove a node from the open list.
+ * @param a node's position
+ * @return none
+ */
 void OpenList::Remove(const std::pair<int, int> &node) {
     double min_key = -1.0;
     UpdateKey(min_key, node);
@@ -33,6 +59,11 @@ void OpenList::Remove(const std::pair<int, int> &node) {
     priority_queue.pop_back();
 }
 
+/**
+ * @brief Get the node on the top of the open list (a minimum heap).
+ * @param none
+ * @return the top node's priority in searching and its position
+ */
 std::pair<double, std::pair<int, int>> OpenList::Top() const {
     auto key = std::get<0>(priority_queue.front());
     auto position = std::make_pair(std::get<1>(priority_queue.front()),
@@ -40,6 +71,11 @@ std::pair<double, std::pair<int, int>> OpenList::Top() const {
     return std::make_pair(key, position);
 }
 
+/**
+ * @brief Get the node on the top of the open list and romovee it.
+ * @param none
+ * @return the top node's priority in searching and its position
+ */
 std::pair<double, std::pair<int, int>> OpenList::Pop() {
     std::pop_heap(priority_queue.begin(),
                   priority_queue.end(), std::greater<>());
@@ -51,6 +87,11 @@ std::pair<double, std::pair<int, int>> OpenList::Pop() {
     return std::make_pair(key, position);
 }
 
+/**
+ * @brief Find if a node is in the open list.
+ * @param none
+ * @return true if the node exsit and false if not
+ */
 bool OpenList::Find(const std::pair<int, int> &node_to_find) const {
     for (auto const &node : priority_queue) {
         if (std::get<1>(node) == node_to_find.first &&

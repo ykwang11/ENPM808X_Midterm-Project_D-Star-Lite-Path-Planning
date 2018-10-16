@@ -1,4 +1,17 @@
-// Copyright [2018] <Yu-Kai Wang>
+/**
+ * @file Map.cpp
+ * @author Yu-Kai Wang
+ * @copyright MIT License
+ *
+ * @brief D* Lite Path Planning
+ *
+ * @section Description
+ *
+ * This program plans the path of the robot, re-plan new path when the map 
+ * changes and moves the robot to avoid obstacles. That is, it performs the 
+ * D* Lite algorithm.
+ * 
+ */
 
 #include <iostream>
 #include <vector>
@@ -23,7 +36,7 @@ int main() {
     std::vector<std::pair<int, int>> obstacle, hidden_obstacle;
     OpenList openlist;
 
-    // Setting the environment
+    // Setting the environment: obstacles. hedden obstacles, the goal, the robot
     obstacle.push_back(std::make_pair(1, 1));
     obstacle.push_back(std::make_pair(0, 2));
     obstacle.push_back(std::make_pair(1, 2));
@@ -35,7 +48,7 @@ int main() {
     // Initialize
     Initialize(&map, &openlist);
 
-    // Compute shortest path at the beginning
+    // Compute shortest path in the beginning
     ComputeShortestPath(robot, &map, &openlist);
 
     // Keep moving until reach the goal
@@ -59,13 +72,25 @@ int main() {
     return 0;
 }
 
+/**
+ * @brief Initialize the map and the open list
+ * @param the map and the open list
+ * @return none
+ */
 void Initialize(Map* map_ptr, OpenList* openlist_ptr) {
+    // One lookahead cost of the goal must be zero
     auto goal_rhs = 0.0;
     map_ptr->UpdateCellRhs(map_ptr->GetGoal(), goal_rhs);
+    // Insert the goal to open list
     auto new_key = map_ptr->CalculateCellKey(map_ptr->GetGoal());
     openlist_ptr->Insert(new_key, map_ptr->GetGoal());
 }
 
+/**
+ * @brief Compute the shortest path
+ * @param the robot, the map and the open list
+ * @return none
+ */
 void ComputeShortestPath(const Robot& robot,
                          Map* map_ptr, OpenList* openlist_ptr) {
     while (openlist_ptr->Top().first <
@@ -94,10 +119,16 @@ void ComputeShortestPath(const Robot& robot,
             }
         }
     }
+    // Show the new computed shortest path.
     map_ptr->PrintValue();
     map_ptr->PrintResult();
 }
 
+/**
+ * @brief Update node of interest
+ * @param the position of the node, the map and the open list
+ * @return none
+ */
 void UpdateVertex(const std::pair<int, int> &vertex,
                   Map *map_ptr, OpenList *openlist_ptr) {
     if (vertex != map_ptr->GetGoal()) {
@@ -111,6 +142,11 @@ void UpdateVertex(const std::pair<int, int> &vertex,
     }
 }
 
+/**
+ * @brief Find the numimum rhs of amoung node's neighbors.
+ * @param the position of the node, the map and the open list
+ * @return minimum rhs 
+ */
 double ComputeMinRhs(const std::pair<int, int> &vertex, Map *map_ptr) {
     double min_rhs = map_ptr->infinity_cost;
     auto neibors = map_ptr->FindNeighbors(vertex);
@@ -122,6 +158,11 @@ double ComputeMinRhs(const std::pair<int, int> &vertex, Map *map_ptr) {
     return min_rhs;
 }
 
+/**
+ * @brief Find next position with minimum g-value plus travel cost
+ * @param the position of the current node and the map
+ * @return next position in the shortest path
+ */
 std::pair<int, int> ComputeNextPotision(
                     const std::pair<int, int> &current_position, Map *map_ptr) {
     auto next_position = current_position;
@@ -137,6 +178,11 @@ std::pair<int, int> ComputeNextPotision(
     return next_position;
 }
 
+/**
+ * @brief Find hidden obstacle and recognize it a obstacle
+ * @param robot's current position, the map and the open list
+ * @return if there are hidden obstacle around
+ */
 bool DetectHiddenObstacle(const std::pair<int, int> &current_position,
                           Map *map_ptr, OpenList *openlist_ptr) {
     auto is_changed = false;
@@ -145,6 +191,7 @@ bool DetectHiddenObstacle(const std::pair<int, int> &current_position,
             map_ptr->UpdateCellStatus(candidate, map_ptr->obstacle_mark);
 
             is_changed = true;
+            // Update node's status
             UpdateVertex(candidate, map_ptr, openlist_ptr);
 
             for (auto const &candidate_neighbor :

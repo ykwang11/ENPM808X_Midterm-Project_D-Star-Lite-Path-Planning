@@ -1,4 +1,15 @@
-// Copyright [2018] <Yu-Kai Wang>
+/**
+ * @file MapTest.cpp
+ * @author Yu-Kai Wang
+ * @copyright MIT License
+ *
+ * @brief D* Lite Path Planning
+ *
+ * @section Description
+ *
+ * Test cases for the "Map" class
+ * 
+ */
 
 #include "Map.h"
 #include "Cell.h"

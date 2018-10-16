@@ -1,4 +1,15 @@
-// Copyright [2018] <Yu-Kai Wang>
+/**
+ * @file OpenListTest.cpp
+ * @author Yu-Kai Wang
+ * @copyright MIT License
+ *
+ * @brief D* Lite Path Planning
+ *
+ * @section Description
+ *
+ * Test cases for the "OpenList" class
+ * 
+ */
 
 #include "OpenList.h"
 #include <gtest/gtest.h>

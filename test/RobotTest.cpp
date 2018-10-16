@@ -1,4 +1,15 @@
-// Copyright [2018] <Yu-Kai Wang>
+/**
+ * @file RobotTest.cpp
+ * @author Yu-Kai Wang
+ * @copyright MIT License
+ *
+ * @brief D* Lite Path Planning
+ *
+ * @section Description
+ *
+ * Test cases for the "Robot" class
+ * 
+ */
 
 #include "Robot.h"
 #include <gtest/gtest.h>

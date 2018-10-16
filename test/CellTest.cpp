@@ -1,9 +1,19 @@
-// Copyright [2018] <Yu-Kai Wang>
+/**
+ * @file CellTest.cpp
+ * @author Yu-Kai Wang
+ * @copyright MIT License
+ *
+ * @brief D* Lite Path Planning
+ *
+ * @section Description
+ *
+ * Test cases for the "Cell" class
+ * 
+ */
 
 #include "Cell.h"
 #include <gtest/gtest.h>
 #include <string>
-
 
 TEST(CellTest, testCell) {
     Cell cell_test(10000.0);
