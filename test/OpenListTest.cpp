@@ -13,7 +13,7 @@ TEST(CellOpenList, testOpenList) {
     openlist_test.Insert(0.7, first_node);
     openlist_test.Insert(1.5, second_node);
     openlist_test.Insert(0.5, third_node);
-    
+
     EXPECT_EQ(openlist_test.Top().second.second, third_node.second);
     EXPECT_EQ(openlist_test.Pop().second.second, third_node.second);
     EXPECT_EQ(openlist_test.Top().second.first, first_node.first);
