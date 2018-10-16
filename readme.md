@@ -7,7 +7,8 @@
 
 ---
 ## Licence
-* MIT Licence
+* MIT Licence  
+
 '''  
 Copyright (c) 2018 Yu-Kai Wang
 
@@ -34,6 +35,7 @@ SOFTWARE.
 ## Install via Command-line  
 
 Clone from the repository, create build folder and build program.  
+  
 '''  
 git clone --recursive https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning.git  
 cd ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning  
