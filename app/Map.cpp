@@ -100,7 +100,7 @@ bool Map::Availability(const std::pair<int, int> & position) {
 void Map::PrintValue() {
     std::vector<std::string> lines(map_size.second, "-------------");
     std::cout << "Value for shortest path:" << std::endl
-        << "(g, rhs): " << std::endl<< " -"; 
+        << "(g, rhs): " << std::endl<< " -";
     for (auto line : lines) std::cout << line;
     std::cout << std::endl;
     for (auto const &row : grid) {

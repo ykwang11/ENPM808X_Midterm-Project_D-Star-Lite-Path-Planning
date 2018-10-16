@@ -5,11 +5,13 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <string>
+#include <utility>
 #include "Cell.h"
 
 class Map {
  public:
-    // different costs 
+    // different costs
     const double infinity_cost = 100.0;
     const double diagonal_cost = 2.5;
     const double transitional_cost = 1.0;
