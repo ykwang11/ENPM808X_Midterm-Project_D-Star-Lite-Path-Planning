@@ -24,10 +24,10 @@ Secondly, when the robots detects the hidden obstacle (`?` in the visualization)
 
 The robots realizes it is actually an obstacle (`x` in the visualization).   
 So, it re-computes the shortest path only with thoses nodes matter.  
-That is an incremental search.
+That is an incremental search.  
 ![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-3.png)
 
-At last, the robot reaches goal with the minimum cost.
+At last, the robot reaches goal with the minimum cost.  
 ![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-4.png)
 
 ---
