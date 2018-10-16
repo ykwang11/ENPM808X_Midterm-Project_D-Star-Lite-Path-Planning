@@ -28,6 +28,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
+
 ---
 ## Install via Command-line  
 
@@ -41,6 +42,7 @@ make
 Run tests: ./test/cpp-test  
 Run program: ./app/shell-app
 '''
+
 ---
 ## SIP Process
 SIP process is recorded in product backlog, iteration backlog, and work log.   [Link](https://drive.google.com/drive/folders/1RUn3eqfVhPALQS88JPey561u3MOfQhIE?usp=sharing)
