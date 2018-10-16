@@ -6,9 +6,11 @@ add_executable(
     CellTest.cpp
     MapTest.cpp
     OpenListTest.cpp
+    RobotTest.cpp
     ../app/Cell.cpp
     ../app/Map.cpp
     ../app/OpenList.cpp
+    ../app/Robot.cpp
 )
 
 target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include 

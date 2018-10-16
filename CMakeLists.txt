@@ -14,7 +14,8 @@ if (COVERAGE)
     set(COVERAGE_SRCS app/main.cpp
         include/Cell.h app/Cell.cpp 
         include/Map.h app/Map.cpp
-        include/OpenList.h  app/OpenList.cpp)
+        include/OpenList.h  app/OpenList.cpp
+        include/Robot.h  app/Robot.cpp)
 
     SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
     SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
