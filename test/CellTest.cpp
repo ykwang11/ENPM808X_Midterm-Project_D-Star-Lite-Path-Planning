@@ -1,8 +1,9 @@
 // Copyright [2018] <Yu-Kai Wang>
 
 #include "Cell.h"
-#include "string"
 #include <gtest/gtest.h>
+#include <string>
+
 
 TEST(CellTest, testCell) {
     Cell cell_test(10000.0);

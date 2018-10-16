@@ -4,7 +4,9 @@ add_executable(
     cpp-test
     main.cpp
     CellTest.cpp
+    MapTest.cpp
     ../app/Cell.cpp
+    ../app/Map.cpp
 )
 
 target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include 
