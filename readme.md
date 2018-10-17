@@ -83,12 +83,9 @@ cd build
 ./app/shell-app  
 ```  
 * Run Doxygen:  
-```doxygen ./Doxygen``` 
- 
+```  
+doxygen ./Doxygen 
 ```
----
-
-
 
 ---
 ## SIP Process
