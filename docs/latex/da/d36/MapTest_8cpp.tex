@@ -1,0 +1,215 @@
+\hypertarget{MapTest_8cpp}{}\section{test/\+Map\+Test.cpp File Reference}
+\label{MapTest_8cpp}\index{test/\+Map\+Test.\+cpp@{test/\+Map\+Test.\+cpp}}
+
+
+D$\ast$ Lite Path Planning.  
+
+
+{\ttfamily \#include \char`\"{}Map.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Cell.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MapTest_8cpp_a7c4a0fae2794c84aa53d4cc01c2d121c}{T\+E\+ST} (Map\+Test, test\+Map\+Get\+Method)
+\item 
+\hyperlink{MapTest_8cpp_ac0d89deedb1f950ece5999fa5cc0fef4}{T\+E\+ST} (Map\+Test, test\+Map\+Set\+Method)
+\item 
+\hyperlink{MapTest_8cpp_a7f5c829822381362c84493484e486091}{T\+E\+ST} (Map\+Test, test\+Map\+Other\+Method)
+\item 
+\hyperlink{MapTest_8cpp_a71b8059c360c8f0b6d466a52759e3875}{T\+E\+ST} (Map\+Test, test\+Map\+Print\+Value)
+\item 
+\hyperlink{MapTest_8cpp_ae8340abb7f62176359e6569ad2d49e82}{T\+E\+ST} (Map\+Test, test\+Map\+Print\+Result)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+D$\ast$ Lite Path Planning. 
+
+\begin{DoxyAuthor}{Author}
+Yu-\/\+Kai Wang 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+M\+IT License
+\end{DoxyCopyright}
+\hypertarget{RobotTest_8cpp_Description}{}\subsection{Description}\label{RobotTest_8cpp_Description}
+Test cases for the \char`\"{}\+Map\char`\"{} class 
+
+\subsection{Function Documentation}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Test, test\+Map\+Get\+Method)}{TEST(MapTest, testMapGetMethod)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Test}]{, }
+\item[{test\+Map\+Get\+Method}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_a7c4a0fae2794c84aa53d4cc01c2d121c}{}\label{MapTest_8cpp_a7c4a0fae2794c84aa53d4cc01c2d121c}
+
+\begin{DoxyCode}
+18                                 \{
+19     \textcolor{comment}{// declare a map}
+20     \hyperlink{classMap}{Map} map\_test(5, 5);
+21 
+22     \textcolor{comment}{// add obstacles}
+23     std::vector<std::pair<int, int>> obstacles\_for\_test = \{\};
+24     std::vector<std::pair<int, int>> unknown\_for\_test = \{\};
+25     obstacles\_for\_test.push\_back(std::make\_pair(1, 3));
+26     unknown\_for\_test.push\_back(std::make\_pair(3, 2));
+27     map\_test.AddObstacle(obstacles\_for\_test, unknown\_for\_test);
+28 
+29     \textcolor{comment}{// add goal}
+30     \textcolor{keyword}{auto} goal\_for\_test = std::make\_pair(4, 2);
+31     map\_test.SetGoal(goal\_for\_test);
+32 
+33     \textcolor{comment}{// test map}
+34     \textcolor{keyword}{auto} node\_for\_test = std::make\_pair(1, 1);
+35     std::string status\_for\_test = \textcolor{stringliteral}{" "};
+36     EXPECT\_EQ(map\_test.GetGoal(), goal\_for\_test);
+37     EXPECT\_EQ(map\_test.CurrentCellG(node\_for\_test), 100.0);
+38     EXPECT\_EQ(map\_test.CurrentCellRhs(node\_for\_test), 100.0);
+39     EXPECT\_EQ(map\_test.CalculateCellKey(node\_for\_test), 100.0);
+40     EXPECT\_EQ(map\_test.CurrentCellStatus(node\_for\_test), status\_for\_test);
+41 \}
+\end{DoxyCode}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Test, test\+Map\+Set\+Method)}{TEST(MapTest, testMapSetMethod)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Test}]{, }
+\item[{test\+Map\+Set\+Method}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_ac0d89deedb1f950ece5999fa5cc0fef4}{}\label{MapTest_8cpp_ac0d89deedb1f950ece5999fa5cc0fef4}
+
+\begin{DoxyCode}
+44                                 \{
+45     \textcolor{comment}{// declare a map}
+46     \hyperlink{classMap}{Map} map\_test(8, 9);
+47 
+48     \textcolor{comment}{// add obstacles}
+49     std::vector<std::pair<int, int>> obstacles\_for\_test = \{\};
+50     std::vector<std::pair<int, int>> unknown\_for\_test = \{\};
+51     obstacles\_for\_test.push\_back(std::make\_pair(3, 3));
+52     unknown\_for\_test.push\_back(std::make\_pair(3, 2));
+53     map\_test.AddObstacle(obstacles\_for\_test, unknown\_for\_test);
+54 
+55     \textcolor{comment}{// add goal}
+56     \textcolor{keyword}{auto} goal\_for\_test = std::make\_pair(4, 2);
+57     map\_test.SetGoal(goal\_for\_test);
+58 
+59     \textcolor{comment}{// set map}
+60     \textcolor{keyword}{auto} node\_for\_test = std::make\_pair(5, 5);
+61     \textcolor{keyword}{auto} node2\_for\_test = std::make\_pair(3, 5);
+62     std::string status\_for\_test = \textcolor{stringliteral}{"This is unit Testing"};
+63     map\_test.UpdateCellG(node\_for\_test, 5566.0);
+64     map\_test.SetInfiityCellG(node2\_for\_test);
+65     map\_test.UpdateCellRhs(node\_for\_test, 7878.0);
+66     map\_test.UpdateCellStatus(node\_for\_test, status\_for\_test);
+67 
+68     \textcolor{comment}{// test map}
+69     EXPECT\_EQ(map\_test.CurrentCellG(node\_for\_test), 5566.0);
+70     EXPECT\_EQ(map\_test.CurrentCellG(node2\_for\_test), 100.0);
+71     EXPECT\_EQ(map\_test.CurrentCellRhs(node\_for\_test), 7878.0);
+72     EXPECT\_EQ(map\_test.CurrentCellStatus(node\_for\_test), status\_for\_test);
+73 \}
+\end{DoxyCode}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Test, test\+Map\+Other\+Method)}{TEST(MapTest, testMapOtherMethod)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Test}]{, }
+\item[{test\+Map\+Other\+Method}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_a7f5c829822381362c84493484e486091}{}\label{MapTest_8cpp_a7f5c829822381362c84493484e486091}
+
+\begin{DoxyCode}
+76                                   \{
+77     \textcolor{comment}{// declare a map}
+78     \hyperlink{classMap}{Map} map\_test(100, 70);
+79 
+80     \textcolor{comment}{// add obstacles}
+81     std::vector<std::pair<int, int>> obstacles\_for\_test = \{\};
+82     std::vector<std::pair<int, int>> unknown\_for\_test = \{\};
+83     obstacles\_for\_test.push\_back(std::make\_pair(99, 3));
+84     unknown\_for\_test.push\_back(std::make\_pair(3, 22));
+85     map\_test.AddObstacle(obstacles\_for\_test, unknown\_for\_test);
+86 
+87     \textcolor{comment}{// test map}
+88     \textcolor{keyword}{auto} node\_for\_test = std::make\_pair(99, 2);
+89     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size = 4;
+90     EXPECT\_EQ(map\_test.FindNeighbors(node\_for\_test).size(), size);
+91     EXPECT\_FALSE(map\_test.Availability(std::make\_pair(99, 3)));
+92     EXPECT\_EQ(map\_test.ComputeCost(node\_for\_test,
+93                                    std::make\_pair(99, 3)), 100.0);
+94 \}
+\end{DoxyCode}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Test, test\+Map\+Print\+Value)}{TEST(MapTest, testMapPrintValue)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Test}]{, }
+\item[{test\+Map\+Print\+Value}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_a71b8059c360c8f0b6d466a52759e3875}{}\label{MapTest_8cpp_a71b8059c360c8f0b6d466a52759e3875}
+
+\begin{DoxyCode}
+96                                  \{
+97     \textcolor{comment}{// declare a map}
+98     \hyperlink{classMap}{Map} map\_test(2, 2);
+99 
+100     \textcolor{comment}{// test map}
+101     std::string output;
+102     output.append(\textcolor{stringliteral}{"Value for shortest path:\(\backslash\)n"});
+103     output.append(\textcolor{stringliteral}{"(g, rhs): \(\backslash\)n"});
+104     output.append(\textcolor{stringliteral}{" ---------------------------\(\backslash\)n"});
+105     output.append(\textcolor{stringliteral}{" | (100, 100) | (100, 100) | \(\backslash\)n"});
+106     output.append(\textcolor{stringliteral}{" ---------------------------\(\backslash\)n"});
+107     output.append(\textcolor{stringliteral}{" | (100, 100) | (100, 100) | \(\backslash\)n"});
+108     output.append(\textcolor{stringliteral}{" ---------------------------\(\backslash\)n\(\backslash\)n"});
+109 
+110     testing::internal::CaptureStdout();
+111     map\_test.PrintValue();
+112     std::string myoutput = testing::internal::GetCapturedStdout();
+113     EXPECT\_EQ(myoutput, output);
+114 \}
+\end{DoxyCode}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Test, test\+Map\+Print\+Result)}{TEST(MapTest, testMapPrintResult)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Test}]{, }
+\item[{test\+Map\+Print\+Result}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_ae8340abb7f62176359e6569ad2d49e82}{}\label{MapTest_8cpp_ae8340abb7f62176359e6569ad2d49e82}
+
+\begin{DoxyCode}
+117                                   \{
+118     \textcolor{comment}{// declare a map}
+119     \hyperlink{classMap}{Map} map\_test(2, 2);
+120 
+121     \textcolor{comment}{// add obstacles}
+122     std::vector<std::pair<int, int>> obstacles\_for\_test = \{\};
+123     std::vector<std::pair<int, int>> unknown\_for\_test = \{\};
+124     obstacles\_for\_test.push\_back(std::make\_pair(0, 1));
+125     unknown\_for\_test.push\_back(std::make\_pair(1, 0));
+126     map\_test.AddObstacle(obstacles\_for\_test, unknown\_for\_test);
+127 
+128     \textcolor{comment}{// add goal}
+129     \textcolor{keyword}{auto} goal\_for\_test = std::make\_pair(1, 1);
+130     map\_test.SetGoal(goal\_for\_test);
+131 
+132     \textcolor{comment}{// test map}
+133     std::string output;
+134     output.append(\textcolor{stringliteral}{"Result: \(\backslash\)n"});
+135     output.append(\textcolor{stringliteral}{"start: s goal: g robot: . obstacle: x unknown: ?\(\backslash\)n"});
+136     output.append(\textcolor{stringliteral}{" ---------\(\backslash\)n"});
+137     output.append(\textcolor{stringliteral}{" |   | x | \(\backslash\)n"});
+138     output.append(\textcolor{stringliteral}{" ---------\(\backslash\)n"});
+139     output.append(\textcolor{stringliteral}{" | ? | g | \(\backslash\)n"});
+140     output.append(\textcolor{stringliteral}{" ---------\(\backslash\)n\(\backslash\)n"});
+141 
+142     testing::internal::CaptureStdout();
+143     map\_test.PrintResult();
+144     std::string myoutput = testing::internal::GetCapturedStdout();
+145     EXPECT\_EQ(myoutput, output);
+146 \}
+\end{DoxyCode}

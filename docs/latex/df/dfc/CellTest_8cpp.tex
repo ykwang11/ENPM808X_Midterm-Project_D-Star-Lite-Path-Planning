@@ -1,0 +1,57 @@
+\hypertarget{CellTest_8cpp}{}\section{test/\+Cell\+Test.cpp File Reference}
+\label{CellTest_8cpp}\index{test/\+Cell\+Test.\+cpp@{test/\+Cell\+Test.\+cpp}}
+
+
+D$\ast$ Lite Path Planning.  
+
+
+{\ttfamily \#include \char`\"{}Cell.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CellTest_8cpp_a05cba056d6b390fbd2734d0fa65a110c}{T\+E\+ST} (Cell\+Test, test\+Cell)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+D$\ast$ Lite Path Planning. 
+
+\begin{DoxyAuthor}{Author}
+Yu-\/\+Kai Wang 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+M\+IT License
+\end{DoxyCopyright}
+\hypertarget{RobotTest_8cpp_Description}{}\subsection{Description}\label{RobotTest_8cpp_Description}
+Test cases for the \char`\"{}\+Cell\char`\"{} class 
+
+\subsection{Function Documentation}
+\index{Cell\+Test.\+cpp@{Cell\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Cell\+Test.\+cpp@{Cell\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Cell\+Test, test\+Cell)}{TEST(CellTest, testCell)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Cell\+Test}]{, }
+\item[{test\+Cell}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{CellTest_8cpp_a05cba056d6b390fbd2734d0fa65a110c}{}\label{CellTest_8cpp_a05cba056d6b390fbd2734d0fa65a110c}
+
+\begin{DoxyCode}
+18                          \{
+19     \hyperlink{classCell}{Cell} cell\_test(10000.0);
+20     EXPECT\_EQ(cell\_test.CurrentG(), 10000.0);
+21     EXPECT\_EQ(cell\_test.CurrentRhs(), 10000.0);
+22     std::string string\_test = \textcolor{stringliteral}{" "};
+23     EXPECT\_EQ(cell\_test.CurrentStatus(), string\_test);
+24 
+25     cell\_test.UpdateG(10.0);
+26     cell\_test.UpdateRhs(10.0);
+27     cell\_test.UpdateStatus(\textcolor{stringliteral}{"*"});
+28 
+29     EXPECT\_EQ(cell\_test.CurrentG(), 10.0);
+30     EXPECT\_EQ(cell\_test.CurrentRhs(), 10.0);
+31     std::string updated\_string\_test = \textcolor{stringliteral}{"*"};
+32     EXPECT\_EQ(cell\_test.CurrentStatus(), updated\_string\_test);
+33 \}
+\end{DoxyCode}

@@ -1,0 +1,58 @@
+\hypertarget{OpenListTest_8cpp}{}\section{test/\+Open\+List\+Test.cpp File Reference}
+\label{OpenListTest_8cpp}\index{test/\+Open\+List\+Test.\+cpp@{test/\+Open\+List\+Test.\+cpp}}
+
+
+D$\ast$ Lite Path Planning.  
+
+
+{\ttfamily \#include \char`\"{}Open\+List.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{OpenListTest_8cpp_a0d753783ee0df41ce0b6a39f0c4e766e}{T\+E\+ST} (Cell\+Open\+List, test\+Open\+List)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+D$\ast$ Lite Path Planning. 
+
+\begin{DoxyAuthor}{Author}
+Yu-\/\+Kai Wang 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+M\+IT License
+\end{DoxyCopyright}
+\hypertarget{RobotTest_8cpp_Description}{}\subsection{Description}\label{RobotTest_8cpp_Description}
+Test cases for the \char`\"{}\+Open\+List\char`\"{} class 
+
+\subsection{Function Documentation}
+\index{Open\+List\+Test.\+cpp@{Open\+List\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Open\+List\+Test.\+cpp@{Open\+List\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Cell\+Open\+List, test\+Open\+List)}{TEST(CellOpenList, testOpenList)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Cell\+Open\+List}]{, }
+\item[{test\+Open\+List}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{OpenListTest_8cpp_a0d753783ee0df41ce0b6a39f0c4e766e}{}\label{OpenListTest_8cpp_a0d753783ee0df41ce0b6a39f0c4e766e}
+
+\begin{DoxyCode}
+19                                  \{
+20     \hyperlink{classOpenList}{OpenList} openlist\_test;
+21     \textcolor{keyword}{auto} first\_node = std::make\_pair(3, 2);
+22     \textcolor{keyword}{auto} second\_node = std::make\_pair(4, 5);
+23     \textcolor{keyword}{auto} third\_node = std::make\_pair(6, 0);
+24     openlist\_test.\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(0.7, first\_node);
+25     openlist\_test.\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(1.5, second\_node);
+26     openlist\_test.\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(0.5, third\_node);
+27 
+28     EXPECT\_EQ(openlist\_test.\hyperlink{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}{Top}().second.second, third\_node.second);
+29     EXPECT\_EQ(openlist\_test.\hyperlink{classOpenList_a6729ec1717dd8382b6054cc5dd2d873b}{Pop}().second.second, third\_node.second);
+30     EXPECT\_EQ(openlist\_test.\hyperlink{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}{Top}().second.first, first\_node.first);
+31     openlist\_test.\hyperlink{classOpenList_a197566325e2a0df8ec00b6470752c7b7}{UpdateKey}(3.3 , first\_node);
+32     EXPECT\_EQ(openlist\_test.\hyperlink{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}{Top}().second.second, second\_node.second);
+33     EXPECT\_FALSE(openlist\_test.\hyperlink{classOpenList_aee52373704c36193c946c54a26cdd1b6}{Find}(third\_node));
+34     EXPECT\_TRUE(openlist\_test.\hyperlink{classOpenList_aee52373704c36193c946c54a26cdd1b6}{Find}(first\_node));
+35 \}
+\end{DoxyCode}

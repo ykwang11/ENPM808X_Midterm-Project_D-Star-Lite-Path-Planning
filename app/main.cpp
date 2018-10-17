@@ -74,7 +74,8 @@ int main() {
 
 /**
  * @brief Initialize the map and the open list
- * @param the map and the open list
+ * @param map_ptr the pointer of the map
+ * @param openlist_ptr the pointer of the open list
  * @return none
  */
 void Initialize(Map* map_ptr, OpenList* openlist_ptr) {
@@ -88,7 +89,9 @@ void Initialize(Map* map_ptr, OpenList* openlist_ptr) {
 
 /**
  * @brief Compute the shortest path
- * @param the robot, the map and the open list
+ * @param robot the robot
+ * @param map_ptr the pointer of the map
+ * @param openlist_ptr the pointer of the open list
  * @return none
  */
 void ComputeShortestPath(const Robot& robot,
@@ -126,7 +129,9 @@ void ComputeShortestPath(const Robot& robot,
 
 /**
  * @brief Update node of interest
- * @param the position of the node, the map and the open list
+ * @param vertex the position of the node
+ * @param map_ptr the pointer of the map
+ * @param openlist_ptr the pointer of the open list
  * @return none
  */
 void UpdateVertex(const std::pair<int, int> &vertex,
@@ -144,7 +149,8 @@ void UpdateVertex(const std::pair<int, int> &vertex,
 
 /**
  * @brief Find the numimum rhs of amoung node's neighbors.
- * @param the position of the node, the map and the open list
+ * @param vertex the position of the node
+ * @param map_ptr the pointer of the map
  * @return minimum rhs 
  */
 double ComputeMinRhs(const std::pair<int, int> &vertex, Map *map_ptr) {
@@ -160,7 +166,8 @@ double ComputeMinRhs(const std::pair<int, int> &vertex, Map *map_ptr) {
 
 /**
  * @brief Find next position with minimum g-value plus travel cost
- * @param the position of the current node and the map
+ * @param current_position the position of the current node
+ * @param map_ptr the pointer of the map
  * @return next position in the shortest path
  */
 std::pair<int, int> ComputeNextPotision(
@@ -180,7 +187,9 @@ std::pair<int, int> ComputeNextPotision(
 
 /**
  * @brief Find hidden obstacle and recognize it a obstacle
- * @param robot's current position, the map and the open list
+ * @param current_position robot's current position
+ * @param map_ptr the pointer of the map
+ * @param openlist_ptr the pointer of the open list
  * @return if there are hidden obstacle around
  */
 bool DetectHiddenObstacle(const std::pair<int, int> &current_position,

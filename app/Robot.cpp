@@ -15,21 +15,20 @@
 
 /**
  * @brief Constructor
- * @param the start point of the robot
+ * @param start_point the start point of the robot
  * @return none
  */
 Robot::Robot(const std::pair<int, int> &start_point) { position = start_point; }
 
 /**
  * @brief Get current position.
- * @param none
  * @return the position of the robot
  */
 std::pair<int, int> Robot::CurrentPosition() const { return position; }
 
 /**
  * @brief Move the robot.
- * @param next position
+ * @param next_position next position
  * @return none
  */
 void Robot::Move(const std::pair<int, int> &next_position) {

@@ -17,7 +17,7 @@
 
 /**
  * @brief Constructor.
- * @param number for the inital g-value and rhs-value
+ * @param initial_num a number for the inital g-value and rhs-value
  * @return none
  */
 Cell::Cell(const double &initial_num) {
@@ -28,42 +28,39 @@ Cell::Cell(const double &initial_num) {
 
 /**
  * @brief Get current g-value.
- * @param none
  * @return g-value
  */
 double Cell::CurrentG() const { return g; }
 
 /**
  * @brief Get current rhs-value.
- * @param none
  * @return rhs-value
  */
 double Cell::CurrentRhs() const { return rhs; }
 
 /**
  * @brief Get current status: obstacle, unknown obstacle, goal, or start point.
- * @param none
  * @return mark that represent the status
  */
 std::string Cell::CurrentStatus() const { return status; }
 
 /**
  * @brief Set new g-value.
- * @param new g-value
+ * @param new_g new estamated distance to the goal
  * @return none
  */
 void Cell::UpdateG(const double &new_g) { g = new_g; }
 
 /**
  * @brief Set new rhs-value.
- * @param new rhs-value
+ * @param new_rhs one step lookahead values based on the g-values
  * @return none
  */
 void Cell::UpdateRhs(const double &new_rhs) { rhs = new_rhs; }
 
 /**
  * @brief Set new status.
- * @param mark represent new status
+ * @param new_status a mark represent new status
  * @return none
  */
 void Cell::UpdateStatus(const std::string &new_status) { status = new_status; }

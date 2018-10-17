@@ -1,0 +1,585 @@
+\hypertarget{classMap}{}\section{Map Class Reference}
+\label{classMap}\index{Map@{Map}}
+
+
+{\ttfamily \#include $<$Map.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMap_a84d193a79ce3fcbe8e5dc5cb9f1c4664}{Map} (const int \&, const int \&)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a934e51326ce7c074d8fd6b0dab42edaf}{Add\+Obstacle} (const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&, const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Add obstacles and change cells\textquotesingle{}s status. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a8bf487bae64af3f7395b0e1a485a2058}{Set\+Goal} (const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Set the goal and change cells\textquotesingle{}s status. \end{DoxyCompactList}\item 
+std\+::pair$<$ int, int $>$ \hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{Get\+Goal} () const 
+\begin{DoxyCompactList}\small\item\em Get the goal\textquotesingle{}s position. \end{DoxyCompactList}\item 
+double \hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{Current\+CellG} (const std\+::pair$<$ int, int $>$ \&) const 
+\begin{DoxyCompactList}\small\item\em Get the g-\/value of the cell with given position. \end{DoxyCompactList}\item 
+double \hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{Current\+Cell\+Rhs} (const std\+::pair$<$ int, int $>$ \&) const 
+\begin{DoxyCompactList}\small\item\em Get the rhs-\/value of the cell with given position. \end{DoxyCompactList}\item 
+double \hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{Calculate\+Cell\+Key} (const std\+::pair$<$ int, int $>$ \&) const 
+\begin{DoxyCompactList}\small\item\em Caculat the key (priority in search) of the cell with given position. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classMap_a917164441063705c869d8bcf54424710}{Current\+Cell\+Status} (const std\+::pair$<$ int, int $>$ \&) const 
+\begin{DoxyCompactList}\small\item\em Get the status of the cell with given position. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{Update\+CellG} (const std\+::pair$<$ int, int $>$ \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Set the g-\/value of the cell with given position. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{Update\+Cell\+Rhs} (const std\+::pair$<$ int, int $>$ \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Set the rhs-\/value of the cell with given position. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a6744cd1fd471d8c68699fbf919c7d983}{Update\+Cell\+Status} (const std\+::pair$<$ int, int $>$ \&, const std\+::string \&)
+\begin{DoxyCompactList}\small\item\em Set the status of the cell with given position. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_ab6e992e3c5064f1837fafd3547d9891a}{Set\+Infiity\+CellG} (const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Set the g-\/value to infinity of the cell with given position. \end{DoxyCompactList}\item 
+double \hyperlink{classMap_a011926cea282559f37768dadadf46f69}{Compute\+Cost} (const std\+::pair$<$ int, int $>$ \&, const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Compust the cost of from current node to next node. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{Find\+Neighbors} (const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Find eight neighbos that are reachable\+: not a obstacle nor outside. \end{DoxyCompactList}\item 
+bool \hyperlink{classMap_a5fe94fd021d5058ecab454ef937b2afe}{Availability} (const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Check if the node is not a obstacle nor outside. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a74f72513109a895c313de5bfbecb3735}{Print\+Value} ()
+\begin{DoxyCompactList}\small\item\em Visualize all g-\/values and rhs-\/values in the map on the terminal. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a807b37ec77cdc14d635399b1c1eb7099}{Print\+Result} ()
+\begin{DoxyCompactList}\small\item\em Visualize the map and the path the robot has traveled on the terminal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const double \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\+\_\+cost} = 100.\+0
+\item 
+const double \hyperlink{classMap_a950831ea68de36caa8d0949f2d2cdc5e}{diagonal\+\_\+cost} = 2.\+5
+\item 
+const double \hyperlink{classMap_ac42d63e94fc2df264c2f280451f9003e}{transitional\+\_\+cost} = 1.\+0
+\item 
+const std\+::string \hyperlink{classMap_ab8cb02a3b688f51338598f14d7916db9}{robot\+\_\+mark} = \char`\"{}.\char`\"{}
+\item 
+const std\+::string \hyperlink{classMap_a685d385115aaab17c7bcd3f0b2f95664}{goal\+\_\+mark} = \char`\"{}g\char`\"{}
+\item 
+const std\+::string \hyperlink{classMap_a3f12dcec30f23abce2b791c17189ef97}{start\+\_\+mark} = \char`\"{}s\char`\"{}
+\item 
+const std\+::string \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\+\_\+mark} = \char`\"{}x\char`\"{}
+\item 
+const std\+::string \hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\+\_\+mark} = \char`\"{}?\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Map(const int \&, const int \&)}{Map(const int &, const int &)}}]{\setlength{\rightskip}{0pt plus 5cm}Map\+::\+Map (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{height, }
+\item[{const int \&}]{width}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classMap_a84d193a79ce3fcbe8e5dc5cb9f1c4664}{}\label{classMap_a84d193a79ce3fcbe8e5dc5cb9f1c4664}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & the size of the map \\
+\hline
+{\em width} & the size of the map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+24                                             \{
+25     std::vector<std::vector<Cell>> new\_grid(
+26         height,
+27         std::vector<Cell>(width, \hyperlink{classCell}{Cell}(\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost})));
+28     grid = new\_grid;
+29     map\_size = std::make\_pair(height, width);
+30 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\index{Map@{Map}!Add\+Obstacle@{Add\+Obstacle}}
+\index{Add\+Obstacle@{Add\+Obstacle}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Add\+Obstacle(const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&, const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&)}{AddObstacle(const std::vector< std::pair< int, int >> &, const std::vector< std::pair< int, int >> &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Add\+Obstacle (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&}]{obstacle, }
+\item[{const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&}]{hidden\+\_\+obstacle}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a934e51326ce7c074d8fd6b0dab42edaf}{}\label{classMap_a934e51326ce7c074d8fd6b0dab42edaf}
+
+
+Add obstacles and change cells\textquotesingle{}s status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obstacle} & a set of obstackes\textquotesingle{}s position \\
+\hline
+{\em hidden\+\_\+obstacle} & a set of hidden obstackes\textquotesingle{}s position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+39                                                                            \{
+40     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : obstacle)
+41         grid.at(node.first).at(node.second).UpdateStatus(\hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark});
+42     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : hidden\_obstacle)
+43         grid.at(node.first).at(node.second).UpdateStatus(\hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\_mark});
+44 \}
+\end{DoxyCode}
+\index{Map@{Map}!Availability@{Availability}}
+\index{Availability@{Availability}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Availability(const std\+::pair$<$ int, int $>$ \&)}{Availability(const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Map\+::\+Availability (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a5fe94fd021d5058ecab454ef937b2afe}{}\label{classMap_a5fe94fd021d5058ecab454ef937b2afe}
+
+
+Check if the node is not a obstacle nor outside. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of next position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if accessible and flase if not 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+185                                                          \{
+186     \textcolor{keywordflow}{if} (position.first < 0 || position.first >= map\_size.first) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+187     \textcolor{keywordflow}{if} (position.second < 0 || position.second >= map\_size.second) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+188     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentStatus()
+189            != \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark};
+190 \}
+\end{DoxyCode}
+\index{Map@{Map}!Calculate\+Cell\+Key@{Calculate\+Cell\+Key}}
+\index{Calculate\+Cell\+Key@{Calculate\+Cell\+Key}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Calculate\+Cell\+Key(const std\+::pair$<$ int, int $>$ \&) const }{CalculateCellKey(const std::pair< int, int > &) const }}]{\setlength{\rightskip}{0pt plus 5cm}double Map\+::\+Calculate\+Cell\+Key (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{}\label{classMap_a85598a8b81937ec7c6cee94053a0a6a1}
+
+
+Caculat the key (priority in search) of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the key value, which is the priority in next search 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+85                                                                     \{
+86     \textcolor{keywordflow}{return} std::min(\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(position), \hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(position));
+87 \}
+\end{DoxyCode}
+\index{Map@{Map}!Compute\+Cost@{Compute\+Cost}}
+\index{Compute\+Cost@{Compute\+Cost}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Compute\+Cost(const std\+::pair$<$ int, int $>$ \&, const std\+::pair$<$ int, int $>$ \&)}{ComputeCost(const std::pair< int, int > &, const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}double Map\+::\+Compute\+Cost (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{current\+\_\+position, }
+\item[{const std\+::pair$<$ int, int $>$ \&}]{next\+\_\+position}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a011926cea282559f37768dadadf46f69}{}\label{classMap_a011926cea282559f37768dadadf46f69}
+
+
+Compust the cost of from current node to next node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+position} & current position of of the cell \\
+\hline
+{\em next\+\_\+position} & next position of of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cost to travel 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+147                                                                 \{
+148     \textcolor{keywordflow}{if} (!\hyperlink{classMap_a5fe94fd021d5058ecab454ef937b2afe}{Availability}(next\_position)) \textcolor{keywordflow}{return} \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
+149     \textcolor{keywordflow}{if} (std::abs(current\_position.first - next\_position.first) +
+150         std::abs(current\_position.second - next\_position.second) == 1)
+151         \textcolor{keywordflow}{return} \hyperlink{classMap_ac42d63e94fc2df264c2f280451f9003e}{transitional\_cost};
+152     \textcolor{keywordflow}{if} (std::abs(current\_position.first - next\_position.first) +
+153         std::abs(current\_position.second - next\_position.second) == 2)
+154         \textcolor{keywordflow}{return} \hyperlink{classMap_a950831ea68de36caa8d0949f2d2cdc5e}{diagonal\_cost};
+155     \textcolor{keywordflow}{else}
+156         \textcolor{keywordflow}{return} \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
+157 \}
+\end{DoxyCode}
+\index{Map@{Map}!Current\+CellG@{Current\+CellG}}
+\index{Current\+CellG@{Current\+CellG}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Current\+Cell\+G(const std\+::pair$<$ int, int $>$ \&) const }{CurrentCellG(const std::pair< int, int > &) const }}]{\setlength{\rightskip}{0pt plus 5cm}double Map\+::\+Current\+CellG (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMap_aae2c27feb5f547122e9ea2639770a8d6}{}\label{classMap_aae2c27feb5f547122e9ea2639770a8d6}
+
+
+Get the g-\/value of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cell\textquotesingle{}s g-\/value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+67                                                                 \{
+68     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentG();
+69 \}
+\end{DoxyCode}
+\index{Map@{Map}!Current\+Cell\+Rhs@{Current\+Cell\+Rhs}}
+\index{Current\+Cell\+Rhs@{Current\+Cell\+Rhs}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Current\+Cell\+Rhs(const std\+::pair$<$ int, int $>$ \&) const }{CurrentCellRhs(const std::pair< int, int > &) const }}]{\setlength{\rightskip}{0pt plus 5cm}double Map\+::\+Current\+Cell\+Rhs (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{}\label{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}
+
+
+Get the rhs-\/value of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cell\textquotesingle{}s rhs-\/value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+76                                                                   \{
+77     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentRhs();
+78 \}
+\end{DoxyCode}
+\index{Map@{Map}!Current\+Cell\+Status@{Current\+Cell\+Status}}
+\index{Current\+Cell\+Status@{Current\+Cell\+Status}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Current\+Cell\+Status(const std\+::pair$<$ int, int $>$ \&) const }{CurrentCellStatus(const std::pair< int, int > &) const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Map\+::\+Current\+Cell\+Status (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMap_a917164441063705c869d8bcf54424710}{}\label{classMap_a917164441063705c869d8bcf54424710}
+
+
+Get the status of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cell\textquotesingle{}s status 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+94                                                                         \{
+95     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentStatus();
+96 \}
+\end{DoxyCode}
+\index{Map@{Map}!Find\+Neighbors@{Find\+Neighbors}}
+\index{Find\+Neighbors@{Find\+Neighbors}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Find\+Neighbors(const std\+::pair$<$ int, int $>$ \&)}{FindNeighbors(const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ Map\+::\+Find\+Neighbors (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_acc6914f9c0c82c43a340f734444b5ead}{}\label{classMap_acc6914f9c0c82c43a340f734444b5ead}
+
+
+Find eight neighbos that are reachable\+: not a obstacle nor outside. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & current position of of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a set of eight neighbors that are reachable 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+165                                         \{
+166     std::vector<std::pair<int, int>> neighbors = \{\};
+167     std::vector<int> search\_neighbor = \{-1, 0, 1\};
+168     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &i : search\_neighbor) \{
+169         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &j : search\_neighbor) \{
+170             \textcolor{keyword}{auto} neighbor = std::make\_pair(position.first + i,
+171                                            position.second + j);
+172             \textcolor{keyword}{auto} cost = \hyperlink{classMap_a011926cea282559f37768dadadf46f69}{ComputeCost}(position, neighbor);
+173             \textcolor{keywordflow}{if} (cost == \hyperlink{classMap_ac42d63e94fc2df264c2f280451f9003e}{transitional\_cost} || cost == 
+      \hyperlink{classMap_a950831ea68de36caa8d0949f2d2cdc5e}{diagonal\_cost})
+174                 neighbors.push\_back(neighbor);
+175         \}
+176     \}
+177     \textcolor{keywordflow}{return} neighbors;
+178 \}
+\end{DoxyCode}
+\index{Map@{Map}!Get\+Goal@{Get\+Goal}}
+\index{Get\+Goal@{Get\+Goal}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Get\+Goal() const }{GetGoal() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ int, int $>$ Map\+::\+Get\+Goal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMap_a6d7140803e7966217802c36b85a42d53}{}\label{classMap_a6d7140803e7966217802c36b85a42d53}
+
+
+Get the goal\textquotesingle{}s position. 
+
+\begin{DoxyReturn}{Returns}
+the position of the goal 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+60 \{ \textcolor{keywordflow}{return} goal; \}
+\end{DoxyCode}
+\index{Map@{Map}!Print\+Result@{Print\+Result}}
+\index{Print\+Result@{Print\+Result}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Print\+Result()}{PrintResult()}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Print\+Result (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a807b37ec77cdc14d635399b1c1eb7099}{}\label{classMap_a807b37ec77cdc14d635399b1c1eb7099}
+
+
+Visualize the map and the path the robot has traveled on the terminal. 
+
+
+\begin{DoxyCode}
+222                       \{
+223     std::vector<std::string> lines(map\_size.second, \textcolor{stringliteral}{"----"});
+224     std::cout << \textcolor{stringliteral}{"Result: "} << std::endl
+225         << \textcolor{stringliteral}{"start: "} << \hyperlink{classMap_a3f12dcec30f23abce2b791c17189ef97}{start\_mark} << \textcolor{stringliteral}{" goal: "} << \hyperlink{classMap_a685d385115aaab17c7bcd3f0b2f95664}{goal\_mark} << \textcolor{stringliteral}{" robot: "}
+226         << \hyperlink{classMap_ab8cb02a3b688f51338598f14d7916db9}{robot\_mark} << \textcolor{stringliteral}{" obstacle: "} << \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark} << \textcolor{stringliteral}{" unknown: "}
+227         << \hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\_mark} << std::endl;
+228     std::cout << \textcolor{stringliteral}{" -"};
+229     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+230     std::cout << std::endl;
+231     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &row : grid) \{
+232         std::cout << \textcolor{stringliteral}{" | "};
+233         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &cell : row) \{
+234             std::cout << cell.CurrentStatus() << \textcolor{stringliteral}{" | "};
+235         \}
+236         std::cout << std::endl << \textcolor{stringliteral}{" -"};
+237         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+238         std::cout << std::endl;
+239     \}
+240     std::cout << std::endl;
+241 \}
+\end{DoxyCode}
+\index{Map@{Map}!Print\+Value@{Print\+Value}}
+\index{Print\+Value@{Print\+Value}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Print\+Value()}{PrintValue()}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Print\+Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a74f72513109a895c313de5bfbecb3735}{}\label{classMap_a74f72513109a895c313de5bfbecb3735}
+
+
+Visualize all g-\/values and rhs-\/values in the map on the terminal. 
+
+
+\begin{DoxyCode}
+197                      \{
+198     std::vector<std::string> lines(map\_size.second, \textcolor{stringliteral}{"-------------"});
+199     std::cout << \textcolor{stringliteral}{"Value for shortest path:"} << std::endl
+200         << \textcolor{stringliteral}{"(g, rhs): "} << std::endl<< \textcolor{stringliteral}{" -"};
+201     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+202     std::cout << std::endl;
+203     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &row : grid) \{
+204         std::cout << \textcolor{stringliteral}{" | "};
+205         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &cell : row) \{
+206             std::cout << \textcolor{stringliteral}{"("} << std::setfill(\textcolor{charliteral}{' '}) << std::setw(3)
+207                       << cell.CurrentG() << \textcolor{stringliteral}{", "}  << std::setfill(\textcolor{charliteral}{' '})
+208                       << std::setw(3) << cell.CurrentRhs() << \textcolor{stringliteral}{") | "};
+209         \}
+210         std::cout << std::endl << \textcolor{stringliteral}{" -"};
+211         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+212         std::cout << std::endl;
+213     \}
+214     std::cout << std::endl;
+215 \}
+\end{DoxyCode}
+\index{Map@{Map}!Set\+Goal@{Set\+Goal}}
+\index{Set\+Goal@{Set\+Goal}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Set\+Goal(const std\+::pair$<$ int, int $>$ \&)}{SetGoal(const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Set\+Goal (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{new\+\_\+goal}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a8bf487bae64af3f7395b0e1a485a2058}{}\label{classMap_a8bf487bae64af3f7395b0e1a485a2058}
+
+
+Set the goal and change cells\textquotesingle{}s status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+goal} & the position of the goal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+51                                                    \{
+52     goal = new\_goal;
+53     \hyperlink{classMap_a6744cd1fd471d8c68699fbf919c7d983}{UpdateCellStatus}(new\_goal, \hyperlink{classMap_a685d385115aaab17c7bcd3f0b2f95664}{goal\_mark});
+54 \}
+\end{DoxyCode}
+\index{Map@{Map}!Set\+Infiity\+CellG@{Set\+Infiity\+CellG}}
+\index{Set\+Infiity\+CellG@{Set\+Infiity\+CellG}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Set\+Infiity\+Cell\+G(const std\+::pair$<$ int, int $>$ \&)}{SetInfiityCellG(const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Set\+Infiity\+CellG (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_ab6e992e3c5064f1837fafd3547d9891a}{}\label{classMap_ab6e992e3c5064f1837fafd3547d9891a}
+
+
+Set the g-\/value to infinity of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+136                                                            \{
+137     \hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{UpdateCellG}(position, \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost});
+138 \}
+\end{DoxyCode}
+\index{Map@{Map}!Update\+CellG@{Update\+CellG}}
+\index{Update\+CellG@{Update\+CellG}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Update\+Cell\+G(const std\+::pair$<$ int, int $>$ \&, const double \&)}{UpdateCellG(const std::pair< int, int > &, const double &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Update\+CellG (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position, }
+\item[{const double \&}]{new\+\_\+g}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a0a3708f12f41a129ce01de2e1b329b77}{}\label{classMap_a0a3708f12f41a129ce01de2e1b329b77}
+
+
+Set the g-\/value of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+{\em new\+\_\+g} & new estamated distance to the goal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+105                                            \{
+106     grid.at(position.first).at(position.second).UpdateG(new\_g);
+107 \}
+\end{DoxyCode}
+\index{Map@{Map}!Update\+Cell\+Rhs@{Update\+Cell\+Rhs}}
+\index{Update\+Cell\+Rhs@{Update\+Cell\+Rhs}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Update\+Cell\+Rhs(const std\+::pair$<$ int, int $>$ \&, const double \&)}{UpdateCellRhs(const std::pair< int, int > &, const double &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Update\+Cell\+Rhs (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position, }
+\item[{const double \&}]{new\+\_\+rhs}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{}\label{classMap_a7d3ff9b29e3de98a9350b3815ae71372}
+
+
+Set the rhs-\/value of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+{\em new\+\_\+rhs} & one step lookahead values based on the g-\/values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+116                                                \{
+117     grid.at(position.first).at(position.second).UpdateRhs(new\_rhs);
+118 \}
+\end{DoxyCode}
+\index{Map@{Map}!Update\+Cell\+Status@{Update\+Cell\+Status}}
+\index{Update\+Cell\+Status@{Update\+Cell\+Status}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Update\+Cell\+Status(const std\+::pair$<$ int, int $>$ \&, const std\+::string \&)}{UpdateCellStatus(const std::pair< int, int > &, const std::string &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::\+Update\+Cell\+Status (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position, }
+\item[{const std\+::string \&}]{new\+\_\+status}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a6744cd1fd471d8c68699fbf919c7d983}{}\label{classMap_a6744cd1fd471d8c68699fbf919c7d983}
+
+
+Set the status of the cell with given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of of the cell \\
+\hline
+{\em new\+\_\+status} & a mark that represent the new status of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+127                                                         \{
+128     grid.at(position.first).at(position.second).UpdateStatus(new\_status);
+129 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\index{Map@{Map}!diagonal\+\_\+cost@{diagonal\+\_\+cost}}
+\index{diagonal\+\_\+cost@{diagonal\+\_\+cost}!Map@{Map}}
+\subsubsection[{\texorpdfstring{diagonal\+\_\+cost}{diagonal_cost}}]{\setlength{\rightskip}{0pt plus 5cm}const double Map\+::diagonal\+\_\+cost = 2.\+5}\hypertarget{classMap_a950831ea68de36caa8d0949f2d2cdc5e}{}\label{classMap_a950831ea68de36caa8d0949f2d2cdc5e}
+\index{Map@{Map}!goal\+\_\+mark@{goal\+\_\+mark}}
+\index{goal\+\_\+mark@{goal\+\_\+mark}!Map@{Map}}
+\subsubsection[{\texorpdfstring{goal\+\_\+mark}{goal_mark}}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::string Map\+::goal\+\_\+mark = \char`\"{}g\char`\"{}}\hypertarget{classMap_a685d385115aaab17c7bcd3f0b2f95664}{}\label{classMap_a685d385115aaab17c7bcd3f0b2f95664}
+\index{Map@{Map}!infinity\+\_\+cost@{infinity\+\_\+cost}}
+\index{infinity\+\_\+cost@{infinity\+\_\+cost}!Map@{Map}}
+\subsubsection[{\texorpdfstring{infinity\+\_\+cost}{infinity_cost}}]{\setlength{\rightskip}{0pt plus 5cm}const double Map\+::infinity\+\_\+cost = 100.\+0}\hypertarget{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{}\label{classMap_a7867cabde1810b3f35fe68a5bb79d21f}
+\index{Map@{Map}!obstacle\+\_\+mark@{obstacle\+\_\+mark}}
+\index{obstacle\+\_\+mark@{obstacle\+\_\+mark}!Map@{Map}}
+\subsubsection[{\texorpdfstring{obstacle\+\_\+mark}{obstacle_mark}}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::string Map\+::obstacle\+\_\+mark = \char`\"{}x\char`\"{}}\hypertarget{classMap_ae4e70862cf5853df223ba019dcc4f0df}{}\label{classMap_ae4e70862cf5853df223ba019dcc4f0df}
+\index{Map@{Map}!robot\+\_\+mark@{robot\+\_\+mark}}
+\index{robot\+\_\+mark@{robot\+\_\+mark}!Map@{Map}}
+\subsubsection[{\texorpdfstring{robot\+\_\+mark}{robot_mark}}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::string Map\+::robot\+\_\+mark = \char`\"{}.\char`\"{}}\hypertarget{classMap_ab8cb02a3b688f51338598f14d7916db9}{}\label{classMap_ab8cb02a3b688f51338598f14d7916db9}
+\index{Map@{Map}!start\+\_\+mark@{start\+\_\+mark}}
+\index{start\+\_\+mark@{start\+\_\+mark}!Map@{Map}}
+\subsubsection[{\texorpdfstring{start\+\_\+mark}{start_mark}}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::string Map\+::start\+\_\+mark = \char`\"{}s\char`\"{}}\hypertarget{classMap_a3f12dcec30f23abce2b791c17189ef97}{}\label{classMap_a3f12dcec30f23abce2b791c17189ef97}
+\index{Map@{Map}!transitional\+\_\+cost@{transitional\+\_\+cost}}
+\index{transitional\+\_\+cost@{transitional\+\_\+cost}!Map@{Map}}
+\subsubsection[{\texorpdfstring{transitional\+\_\+cost}{transitional_cost}}]{\setlength{\rightskip}{0pt plus 5cm}const double Map\+::transitional\+\_\+cost = 1.\+0}\hypertarget{classMap_ac42d63e94fc2df264c2f280451f9003e}{}\label{classMap_ac42d63e94fc2df264c2f280451f9003e}
+\index{Map@{Map}!unknown\+\_\+mark@{unknown\+\_\+mark}}
+\index{unknown\+\_\+mark@{unknown\+\_\+mark}!Map@{Map}}
+\subsubsection[{\texorpdfstring{unknown\+\_\+mark}{unknown_mark}}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::string Map\+::unknown\+\_\+mark = \char`\"{}?\char`\"{}}\hypertarget{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{}\label{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Map_8h}{Map.\+h}\item 
+app/\hyperlink{Map_8cpp}{Map.\+cpp}\end{DoxyCompactItemize}

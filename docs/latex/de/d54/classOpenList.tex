@@ -1,0 +1,201 @@
+\hypertarget{classOpenList}{}\section{Open\+List Class Reference}
+\label{classOpenList}\index{Open\+List@{Open\+List}}
+
+
+{\ttfamily \#include $<$Open\+List.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert} (const double \&, const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Inset a node in the open list. \end{DoxyCompactList}\item 
+void \hyperlink{classOpenList_a197566325e2a0df8ec00b6470752c7b7}{Update\+Key} (const double \&, const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Update the key of node in the open list. \end{DoxyCompactList}\item 
+void \hyperlink{classOpenList_a4452fe5d3a98a52df814ca76f017c9bd}{Remove} (const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Remove a node from the open list. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, std\+::pair$<$ int, int $>$ $>$ \hyperlink{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}{Top} () const 
+\begin{DoxyCompactList}\small\item\em Get the node on the top of the open list (a minimum heap). \end{DoxyCompactList}\item 
+std\+::pair$<$ double, std\+::pair$<$ int, int $>$ $>$ \hyperlink{classOpenList_a6729ec1717dd8382b6054cc5dd2d873b}{Pop} ()
+\begin{DoxyCompactList}\small\item\em Get the node on the top of the open list and romovee it. \end{DoxyCompactList}\item 
+bool \hyperlink{classOpenList_aee52373704c36193c946c54a26cdd1b6}{Find} (const std\+::pair$<$ int, int $>$ \&) const 
+\begin{DoxyCompactList}\small\item\em Find if a node is in the open list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Open\+List@{Open\+List}!Find@{Find}}
+\index{Find@{Find}!Open\+List@{Open\+List}}
+\subsubsection[{\texorpdfstring{Find(const std\+::pair$<$ int, int $>$ \&) const }{Find(const std::pair< int, int > &) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Open\+List\+::\+Find (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{node\+\_\+to\+\_\+find}
+\end{DoxyParamCaption}
+) const}\hypertarget{classOpenList_aee52373704c36193c946c54a26cdd1b6}{}\label{classOpenList_aee52373704c36193c946c54a26cdd1b6}
+
+
+Find if a node is in the open list. 
+
+\begin{DoxyReturn}{Returns}
+true if the node exsit and false if not 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+94                                                                \{
+95     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : priority\_queue) \{
+96         \textcolor{keywordflow}{if} (std::get<1>(node) == node\_to\_find.first &&
+97             std::get<2>(node) == node\_to\_find.second)
+98             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+99     \}
+100     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+101 \}
+\end{DoxyCode}
+\index{Open\+List@{Open\+List}!Insert@{Insert}}
+\index{Insert@{Insert}!Open\+List@{Open\+List}}
+\subsubsection[{\texorpdfstring{Insert(const double \&, const std\+::pair$<$ int, int $>$ \&)}{Insert(const double &, const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Open\+List\+::\+Insert (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{new\+\_\+key, }
+\item[{const std\+::pair$<$ int, int $>$ \&}]{new\+\_\+node}
+\end{DoxyParamCaption}
+)}\hypertarget{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{}\label{classOpenList_a9fed98c24f74b3251baf50cda69c9028}
+
+
+Inset a node in the open list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+key} & thepriority of the node to be added \\
+\hline
+{\em new\+\_\+node} & a candidate node\textquotesingle{}s priority in searching and its position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+25                                                          \{
+26     priority\_queue.push\_back(std::make\_tuple(
+27                              new\_key, new\_node.first, new\_node.second));
+28     std::push\_heap(priority\_queue.begin(),
+29                    priority\_queue.end(), std::greater<>());
+30 \}
+\end{DoxyCode}
+\index{Open\+List@{Open\+List}!Pop@{Pop}}
+\index{Pop@{Pop}!Open\+List@{Open\+List}}
+\subsubsection[{\texorpdfstring{Pop()}{Pop()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, std\+::pair$<$ int, int $>$ $>$ Open\+List\+::\+Pop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classOpenList_a6729ec1717dd8382b6054cc5dd2d873b}{}\label{classOpenList_a6729ec1717dd8382b6054cc5dd2d873b}
+
+
+Get the node on the top of the open list and romovee it. 
+
+\begin{DoxyReturn}{Returns}
+the top node\textquotesingle{}s priority in searching and its position 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+79                                                  \{
+80     std::pop\_heap(priority\_queue.begin(),
+81                   priority\_queue.end(), std::greater<>());
+82     \textcolor{keyword}{auto} top\_node = priority\_queue.back();
+83     priority\_queue.pop\_back();
+84     \textcolor{keyword}{auto} key = std::get<0>(top\_node);
+85     \textcolor{keyword}{auto} position = std::make\_pair(std::get<1>(top\_node),
+86                                    std::get<2>(top\_node));
+87     \textcolor{keywordflow}{return} std::make\_pair(key, position);
+88 \}
+\end{DoxyCode}
+\index{Open\+List@{Open\+List}!Remove@{Remove}}
+\index{Remove@{Remove}!Open\+List@{Open\+List}}
+\subsubsection[{\texorpdfstring{Remove(const std\+::pair$<$ int, int $>$ \&)}{Remove(const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Open\+List\+::\+Remove (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{node}
+\end{DoxyParamCaption}
+)}\hypertarget{classOpenList_a4452fe5d3a98a52df814ca76f017c9bd}{}\label{classOpenList_a4452fe5d3a98a52df814ca76f017c9bd}
+
+
+Remove a node from the open list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & a node\textquotesingle{}s position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+56                                                    \{
+57     \textcolor{keywordtype}{double} min\_key = -1.0;
+58     \hyperlink{classOpenList_a197566325e2a0df8ec00b6470752c7b7}{UpdateKey}(min\_key, node);
+59     std::pop\_heap(priority\_queue.begin(),
+60                   priority\_queue.end(), std::greater<>());
+61     priority\_queue.pop\_back();
+62 \}
+\end{DoxyCode}
+\index{Open\+List@{Open\+List}!Top@{Top}}
+\index{Top@{Top}!Open\+List@{Open\+List}}
+\subsubsection[{\texorpdfstring{Top() const }{Top() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, std\+::pair$<$ int, int $>$ $>$ Open\+List\+::\+Top (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}{}\label{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}
+
+
+Get the node on the top of the open list (a minimum heap). 
+
+\begin{DoxyReturn}{Returns}
+the top node\textquotesingle{}s priority in searching and its position 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+68                                                        \{
+69     \textcolor{keyword}{auto} key = std::get<0>(priority\_queue.front());
+70     \textcolor{keyword}{auto} position = std::make\_pair(std::get<1>(priority\_queue.front()),
+71                                    std::get<2>(priority\_queue.front()));
+72     \textcolor{keywordflow}{return} std::make\_pair(key, position);
+73 \}
+\end{DoxyCode}
+\index{Open\+List@{Open\+List}!Update\+Key@{Update\+Key}}
+\index{Update\+Key@{Update\+Key}!Open\+List@{Open\+List}}
+\subsubsection[{\texorpdfstring{Update\+Key(const double \&, const std\+::pair$<$ int, int $>$ \&)}{UpdateKey(const double &, const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Open\+List\+::\+Update\+Key (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{new\+\_\+key, }
+\item[{const std\+::pair$<$ int, int $>$ \&}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classOpenList_a197566325e2a0df8ec00b6470752c7b7}{}\label{classOpenList_a197566325e2a0df8ec00b6470752c7b7}
+
+
+Update the key of node in the open list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+key} & thepriority of the node to be changed \\
+\hline
+{\em position} & a candidate node\textquotesingle{}s new priority in searching and its position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+39                                                             \{
+40     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} &node : priority\_queue) \{
+41         \textcolor{keywordflow}{if} (std::get<1>(node) == position.first &&
+42             std::get<2>(node) == position.second) \{
+43             std::get<0>(node) = new\_key;
+44             \textcolor{keywordflow}{break};
+45         \}
+46     \}
+47     std::make\_heap(priority\_queue.begin(),
+48                    priority\_queue.end(), std::greater<>());
+49 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{OpenList_8h}{Open\+List.\+h}\item 
+app/\hyperlink{OpenList_8cpp}{Open\+List.\+cpp}\end{DoxyCompactItemize}

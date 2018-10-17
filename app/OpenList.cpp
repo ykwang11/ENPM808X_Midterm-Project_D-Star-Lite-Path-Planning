@@ -17,7 +17,8 @@
 
 /**
  * @brief Inset a node in the open list.
- * @param a candidate node's priority in searching and its position
+ * @param new_key thepriority of the node to be added
+ * @param new_node a candidate node's priority in searching and its position
  * @return none
  */
 void OpenList::Insert(const double &new_key,
@@ -30,7 +31,8 @@ void OpenList::Insert(const double &new_key,
 
 /**
  * @brief Update the key of node in the open list.
- * @param a candidate node's new priority in searching and its position
+ * @param new_key thepriority of the node to be changed
+ * @param position a candidate node's new priority in searching and its position
  * @return none
  */
 void OpenList::UpdateKey(const double &new_key,
@@ -48,7 +50,7 @@ void OpenList::UpdateKey(const double &new_key,
 
 /**
  * @brief Remove a node from the open list.
- * @param a node's position
+ * @param node a node's position
  * @return none
  */
 void OpenList::Remove(const std::pair<int, int> &node) {
@@ -61,7 +63,6 @@ void OpenList::Remove(const std::pair<int, int> &node) {
 
 /**
  * @brief Get the node on the top of the open list (a minimum heap).
- * @param none
  * @return the top node's priority in searching and its position
  */
 std::pair<double, std::pair<int, int>> OpenList::Top() const {
@@ -73,7 +74,6 @@ std::pair<double, std::pair<int, int>> OpenList::Top() const {
 
 /**
  * @brief Get the node on the top of the open list and romovee it.
- * @param none
  * @return the top node's priority in searching and its position
  */
 std::pair<double, std::pair<int, int>> OpenList::Pop() {
@@ -89,7 +89,6 @@ std::pair<double, std::pair<int, int>> OpenList::Pop() {
 
 /**
  * @brief Find if a node is in the open list.
- * @param none
  * @return true if the node exsit and false if not
  */
 bool OpenList::Find(const std::pair<int, int> &node_to_find) const {

@@ -1,0 +1,185 @@
+\hypertarget{classCell}{}\section{Cell Class Reference}
+\label{classCell}\index{Cell@{Cell}}
+
+
+{\ttfamily \#include $<$Cell.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCell_aee96d9f51d2abd240fa7d8061eebc8a0}{Cell} (const double \&)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+double \hyperlink{classCell_a0ca45f795cf14859fd7eca8803a5f51b}{CurrentG} () const 
+\begin{DoxyCompactList}\small\item\em Get current g-\/value. \end{DoxyCompactList}\item 
+double \hyperlink{classCell_a8660018031fb8566c5b8525850d25a78}{Current\+Rhs} () const 
+\begin{DoxyCompactList}\small\item\em Get current rhs-\/value. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classCell_a23e5e30481833f9d186705b040d6888d}{Current\+Status} () const 
+\begin{DoxyCompactList}\small\item\em Get current status\+: obstacle, unknown obstacle, goal, or start point. \end{DoxyCompactList}\item 
+void \hyperlink{classCell_a000478bd99b10e1840d780c03482bb56}{UpdateG} (const double \&)
+\begin{DoxyCompactList}\small\item\em Set new g-\/value. \end{DoxyCompactList}\item 
+void \hyperlink{classCell_a68af196b8617146072088d8db25cf9dd}{Update\+Rhs} (const double \&)
+\begin{DoxyCompactList}\small\item\em Set new rhs-\/value. \end{DoxyCompactList}\item 
+void \hyperlink{classCell_aea41691b31c08258e6d5b637e026aa03}{Update\+Status} (const std\+::string \&)
+\begin{DoxyCompactList}\small\item\em Set new status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\subsubsection[{\texorpdfstring{Cell(const double \&)}{Cell(const double &)}}]{\setlength{\rightskip}{0pt plus 5cm}Cell\+::\+Cell (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{initial\+\_\+num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classCell_aee96d9f51d2abd240fa7d8061eebc8a0}{}\label{classCell_aee96d9f51d2abd240fa7d8061eebc8a0}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+\_\+num} & a number for the inital g-\/value and rhs-\/value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+23                                     \{
+24     g = initial\_num;
+25     rhs = initial\_num;
+26     status = \textcolor{stringliteral}{" "};
+27 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\index{Cell@{Cell}!CurrentG@{CurrentG}}
+\index{CurrentG@{CurrentG}!Cell@{Cell}}
+\subsubsection[{\texorpdfstring{Current\+G() const }{CurrentG() const }}]{\setlength{\rightskip}{0pt plus 5cm}double Cell\+::\+CurrentG (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classCell_a0ca45f795cf14859fd7eca8803a5f51b}{}\label{classCell_a0ca45f795cf14859fd7eca8803a5f51b}
+
+
+Get current g-\/value. 
+
+\begin{DoxyReturn}{Returns}
+g-\/value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+33 \{ \textcolor{keywordflow}{return} g; \}
+\end{DoxyCode}
+\index{Cell@{Cell}!Current\+Rhs@{Current\+Rhs}}
+\index{Current\+Rhs@{Current\+Rhs}!Cell@{Cell}}
+\subsubsection[{\texorpdfstring{Current\+Rhs() const }{CurrentRhs() const }}]{\setlength{\rightskip}{0pt plus 5cm}double Cell\+::\+Current\+Rhs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classCell_a8660018031fb8566c5b8525850d25a78}{}\label{classCell_a8660018031fb8566c5b8525850d25a78}
+
+
+Get current rhs-\/value. 
+
+\begin{DoxyReturn}{Returns}
+rhs-\/value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+39 \{ \textcolor{keywordflow}{return} rhs; \}
+\end{DoxyCode}
+\index{Cell@{Cell}!Current\+Status@{Current\+Status}}
+\index{Current\+Status@{Current\+Status}!Cell@{Cell}}
+\subsubsection[{\texorpdfstring{Current\+Status() const }{CurrentStatus() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Cell\+::\+Current\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classCell_a23e5e30481833f9d186705b040d6888d}{}\label{classCell_a23e5e30481833f9d186705b040d6888d}
+
+
+Get current status\+: obstacle, unknown obstacle, goal, or start point. 
+
+\begin{DoxyReturn}{Returns}
+mark that represent the status 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+45 \{ \textcolor{keywordflow}{return} status; \}
+\end{DoxyCode}
+\index{Cell@{Cell}!UpdateG@{UpdateG}}
+\index{UpdateG@{UpdateG}!Cell@{Cell}}
+\subsubsection[{\texorpdfstring{Update\+G(const double \&)}{UpdateG(const double &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Cell\+::\+UpdateG (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{new\+\_\+g}
+\end{DoxyParamCaption}
+)}\hypertarget{classCell_a000478bd99b10e1840d780c03482bb56}{}\label{classCell_a000478bd99b10e1840d780c03482bb56}
+
+
+Set new g-\/value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+g} & new estamated distance to the goal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+52 \{ g = new\_g; \}
+\end{DoxyCode}
+\index{Cell@{Cell}!Update\+Rhs@{Update\+Rhs}}
+\index{Update\+Rhs@{Update\+Rhs}!Cell@{Cell}}
+\subsubsection[{\texorpdfstring{Update\+Rhs(const double \&)}{UpdateRhs(const double &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Cell\+::\+Update\+Rhs (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{new\+\_\+rhs}
+\end{DoxyParamCaption}
+)}\hypertarget{classCell_a68af196b8617146072088d8db25cf9dd}{}\label{classCell_a68af196b8617146072088d8db25cf9dd}
+
+
+Set new rhs-\/value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+rhs} & one step lookahead values based on the g-\/values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+59 \{ rhs = new\_rhs; \}
+\end{DoxyCode}
+\index{Cell@{Cell}!Update\+Status@{Update\+Status}}
+\index{Update\+Status@{Update\+Status}!Cell@{Cell}}
+\subsubsection[{\texorpdfstring{Update\+Status(const std\+::string \&)}{UpdateStatus(const std::string &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Cell\+::\+Update\+Status (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{new\+\_\+status}
+\end{DoxyParamCaption}
+)}\hypertarget{classCell_aea41691b31c08258e6d5b637e026aa03}{}\label{classCell_aea41691b31c08258e6d5b637e026aa03}
+
+
+Set new status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+status} & a mark represent new status \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+66 \{ status = new\_status; \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Cell_8h}{Cell.\+h}\item 
+app/\hyperlink{Cell_8cpp}{Cell.\+cpp}\end{DoxyCompactItemize}

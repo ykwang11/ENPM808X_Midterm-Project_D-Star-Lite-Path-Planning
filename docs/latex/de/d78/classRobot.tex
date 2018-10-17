@@ -1,0 +1,93 @@
+\hypertarget{classRobot}{}\section{Robot Class Reference}
+\label{classRobot}\index{Robot@{Robot}}
+
+
+{\ttfamily \#include $<$Robot.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRobot_a7d6b0328a1a7da816e682dae3a73fd0a}{Robot} (const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+std\+::pair$<$ int, int $>$ \hyperlink{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{Current\+Position} () const 
+\begin{DoxyCompactList}\small\item\em Get current position. \end{DoxyCompactList}\item 
+void \hyperlink{classRobot_abc4c51254c6d1e67b7a5049a206d7471}{Move} (const std\+::pair$<$ int, int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Move the robot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Robot@{Robot}!Robot@{Robot}}
+\index{Robot@{Robot}!Robot@{Robot}}
+\subsubsection[{\texorpdfstring{Robot(const std\+::pair$<$ int, int $>$ \&)}{Robot(const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}Robot\+::\+Robot (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{start\+\_\+point}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classRobot_a7d6b0328a1a7da816e682dae3a73fd0a}{}\label{classRobot_a7d6b0328a1a7da816e682dae3a73fd0a}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+point} & the start point of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+21 \{ position = start\_point; \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\index{Robot@{Robot}!Current\+Position@{Current\+Position}}
+\index{Current\+Position@{Current\+Position}!Robot@{Robot}}
+\subsubsection[{\texorpdfstring{Current\+Position() const }{CurrentPosition() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ int, int $>$ Robot\+::\+Current\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{}\label{classRobot_a42ea659284dacbdf258bc1e2ca29286e}
+
+
+Get current position. 
+
+\begin{DoxyReturn}{Returns}
+the position of the robot 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+27 \{ \textcolor{keywordflow}{return} position; \}
+\end{DoxyCode}
+\index{Robot@{Robot}!Move@{Move}}
+\index{Move@{Move}!Robot@{Robot}}
+\subsubsection[{\texorpdfstring{Move(const std\+::pair$<$ int, int $>$ \&)}{Move(const std::pair< int, int > &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Robot\+::\+Move (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ int, int $>$ \&}]{next\+\_\+position}
+\end{DoxyParamCaption}
+)}\hypertarget{classRobot_abc4c51254c6d1e67b7a5049a206d7471}{}\label{classRobot_abc4c51254c6d1e67b7a5049a206d7471}
+
+
+Move the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+\_\+position} & next position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+34                                                        \{
+35     position = next\_position;
+36 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Robot_8h}{Robot.\+h}\item 
+app/\hyperlink{Robot_8cpp}{Robot.\+cpp}\end{DoxyCompactItemize}

@@ -17,7 +17,8 @@
 
 /**
  * @brief Constructor.
- * @param height and width of the map
+ * @param height the size of the map
+ * @param width the size of the map
  * @return none
  */
 Map::Map(const int &height, const int &width) {
@@ -30,7 +31,8 @@ Map::Map(const int &height, const int &width) {
 
 /**
  * @brief Add obstacles and change cells's status.
- * @param obstacles' and hidden obstacles' position to be added
+ * @param obstacle a set of obstackes's position
+ * @param hidden_obstacle a set of hidden obstackes's position
  * @return none
  */
 void Map::AddObstacle(const std::vector<std::pair<int, int>> &obstacle,
@@ -43,7 +45,7 @@ void Map::AddObstacle(const std::vector<std::pair<int, int>> &obstacle,
 
 /**
  * @brief Set the goal and change cells's status.
- * @param the goal's position to be added
+ * @param new_goal the position of the goal
  * @return none
  */
 void Map::SetGoal(const std::pair<int, int> &new_goal) {
@@ -53,14 +55,13 @@ void Map::SetGoal(const std::pair<int, int> &new_goal) {
 
 /**
  * @brief Get the goal's position.
- * @param none
  * @return the position of the goal
  */
 std::pair<int, int> Map::GetGoal() const { return goal; }
 
 /**
  * @brief Get the g-value of the cell with given position.
- * @param position of the cell
+ * @param position the position of of the cell
  * @return cell's g-value
  */
 double Map::CurrentCellG(const std::pair<int, int> &position) const {
@@ -69,7 +70,7 @@ double Map::CurrentCellG(const std::pair<int, int> &position) const {
 
 /**
  * @brief Get the rhs-value of the cell with given position.
- * @param position of the cell
+ * @param position the position of of the cell
  * @return cell's rhs-value
  */
 double Map::CurrentCellRhs(const std::pair<int, int> &position) const {
@@ -78,7 +79,7 @@ double Map::CurrentCellRhs(const std::pair<int, int> &position) const {
 
 /**
  * @brief Caculat the key (priority in search) of the cell with given position.
- * @param position of the cell
+ * @param position the position of of the cell
  * @return the key value, which is the priority in next search
  */
 double Map::CalculateCellKey(const std::pair<int, int> &position) const {
@@ -87,7 +88,7 @@ double Map::CalculateCellKey(const std::pair<int, int> &position) const {
 
 /**
  * @brief Get the status of the cell with given position.
- * @param position of the cell
+ * @param position the position of of the cell
  * @return cell's status
  */
 std::string Map::CurrentCellStatus(const std::pair<int, int> &position) const {
@@ -96,7 +97,8 @@ std::string Map::CurrentCellStatus(const std::pair<int, int> &position) const {
 
 /**
  * @brief Set the g-value of the cell with given position.
- * @param cell's position and cell's new g-value
+ * @param position the position of of the cell
+ * @param new_g new estamated distance to the goal
  * @return none
  */
 void Map::UpdateCellG(const std::pair<int, int> &position,
@@ -106,7 +108,8 @@ void Map::UpdateCellG(const std::pair<int, int> &position,
 
 /**
  * @brief Set the rhs-value of the cell with given position.
- * @param cell's position and cell's new rhs-value
+ * @param position the position of of the cell
+ * @param new_rhs one step lookahead values based on the g-values
  * @return none
  */
 void Map::UpdateCellRhs(const std::pair<int, int> &position,
@@ -116,7 +119,8 @@ void Map::UpdateCellRhs(const std::pair<int, int> &position,
 
 /**
  * @brief Set the status of the cell with given position.
- * @param cell's position and cell's new status
+ * @param position the position of of the cell
+ * @param new_status a mark that represent the new status of the cell
  * @return none
  */
 void Map::UpdateCellStatus(const std::pair<int, int> &position,
@@ -126,7 +130,7 @@ void Map::UpdateCellStatus(const std::pair<int, int> &position,
 
 /**
  * @brief Set the g-value to infinity of the cell with given position.
- * @param cell's position and cell's new g-value
+ * @param position the position of of the cell
  * @return none
  */
 void Map::SetInfiityCellG(const std::pair<int, int> &position) {
@@ -134,8 +138,9 @@ void Map::SetInfiityCellG(const std::pair<int, int> &position) {
 }
 
 /**
- * @breif Compust the cost of from current node to next node.
- * @param position of the current node and next node. 
+ * @brief Compust the cost of from current node to next node.
+ * @param current_position current position of of the cell
+ * @param next_position next position of of the cell
  * @return cost to travel
  */
 double Map::ComputeCost(const std::pair<int, int> &current_position,
@@ -152,8 +157,8 @@ double Map::ComputeCost(const std::pair<int, int> &current_position,
 }
 
 /**
- * @breif Find eight neighbos that are reachable: not a obstacle nor outside.
- * @param position of current position of interest
+ * @brief Find eight neighbos that are reachable: not a obstacle nor outside.
+ * @param position current position of of the cell
  * @return a set of eight neighbors that are reachable
  */
 std::vector<std::pair<int, int>> Map::FindNeighbors(
@@ -173,8 +178,8 @@ std::vector<std::pair<int, int>> Map::FindNeighbors(
 }
 
 /**
- * @breif Check if the node is not a obstacle nor outside.
- * @param position of next position
+ * @brief Check if the node is not a obstacle nor outside.
+ * @param position the position of next position
  * @return true if accessible and flase if not 
  */
 bool Map::Availability(const std::pair<int, int> & position) {
@@ -186,7 +191,7 @@ bool Map::Availability(const std::pair<int, int> & position) {
 
 /**
  *
- * @breif Visualize all g-values and rhs-values in the map on the terminal.
+ * @brief Visualize all g-values and rhs-values in the map on the terminal.
  *  
  */
 void Map::PrintValue() {
@@ -211,7 +216,7 @@ void Map::PrintValue() {
 
 /**
  *
- * @breif Visualize the map and the path the robot has traveled on the terminal.
+ * @brief Visualize the map and the path the robot has traveled on the terminal.
  *  
  */
 void Map::PrintResult() {

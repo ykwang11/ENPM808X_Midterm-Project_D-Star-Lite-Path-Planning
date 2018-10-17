@@ -1,0 +1,48 @@
+\hypertarget{RobotTest_8cpp}{}\section{test/\+Robot\+Test.cpp File Reference}
+\label{RobotTest_8cpp}\index{test/\+Robot\+Test.\+cpp@{test/\+Robot\+Test.\+cpp}}
+
+
+D$\ast$ Lite Path Planning.  
+
+
+{\ttfamily \#include \char`\"{}Robot.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{RobotTest_8cpp_a8bccc78fa46d35af4867502f4e443a5d}{T\+E\+ST} (Cell\+Robot, test\+Robot)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+D$\ast$ Lite Path Planning. 
+
+\begin{DoxyAuthor}{Author}
+Yu-\/\+Kai Wang 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+M\+IT License
+\end{DoxyCopyright}
+\hypertarget{RobotTest_8cpp_Description}{}\subsection{Description}\label{RobotTest_8cpp_Description}
+Test cases for the \char`\"{}\+Robot\char`\"{} class 
+
+\subsection{Function Documentation}
+\index{Robot\+Test.\+cpp@{Robot\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Robot\+Test.\+cpp@{Robot\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Cell\+Robot, test\+Robot)}{TEST(CellRobot, testRobot)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Cell\+Robot}]{, }
+\item[{test\+Robot}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{RobotTest_8cpp_a8bccc78fa46d35af4867502f4e443a5d}{}\label{RobotTest_8cpp_a8bccc78fa46d35af4867502f4e443a5d}
+
+\begin{DoxyCode}
+17                            \{
+18     \textcolor{comment}{// test robot's constructor}
+19     \hyperlink{classRobot}{Robot} robot\_test(std::make\_pair(0, 0));
+20     EXPECT\_EQ(robot\_test.CurrentPosition(), std::make\_pair(0, 0));
+21     \textcolor{comment}{// test robot's action}
+22     robot\_test.Move(std::make\_pair(1, 2));
+23     EXPECT\_EQ(robot\_test.CurrentPosition(), std::make\_pair(1, 2));
+24 \}
+\end{DoxyCode}
