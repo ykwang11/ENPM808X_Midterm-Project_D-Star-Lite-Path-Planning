@@ -29,8 +29,6 @@
  *
  * @brief D* Lite Path Planning
  *
- * @section Description
- *
  * Test cases for the "Cell" class
  * 
  */

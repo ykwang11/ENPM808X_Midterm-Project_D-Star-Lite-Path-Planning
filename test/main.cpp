@@ -23,13 +23,11 @@
  */
 
 /**
- * @file RobotTest.cpp
+ * @file main.cpp
  * @author Yu-Kai Wang
  * @copyright MIT License
  *
  * @brief D* Lite Path Planning
- *
- * @section Description
  *
  * Run all test cases
  * 

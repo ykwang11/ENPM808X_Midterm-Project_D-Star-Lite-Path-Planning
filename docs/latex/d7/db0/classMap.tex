@@ -87,13 +87,13 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-24                                             \{
-25     std::vector<std::vector<Cell>> new\_grid(
-26         height,
-27         std::vector<Cell>(width, \hyperlink{classCell}{Cell}(\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost})));
-28     grid = new\_grid;
-29     map\_size = std::make\_pair(height, width);
-30 \}
+46                                             \{
+47     std::vector<std::vector<Cell>> new\_grid(
+48         height,
+49         std::vector<Cell>(width, \hyperlink{classCell}{Cell}(\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost})));
+50     grid = new\_grid;
+51     map\_size = std::make\_pair(height, width);
+52 \}
 \end{DoxyCode}
 
 
@@ -122,12 +122,12 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-39                                                                            \{
-40     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : obstacle)
-41         grid.at(node.first).at(node.second).UpdateStatus(\hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark});
-42     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : hidden\_obstacle)
-43         grid.at(node.first).at(node.second).UpdateStatus(\hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\_mark});
-44 \}
+61                                                                            \{
+62     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : obstacle)
+63         grid.at(node.first).at(node.second).UpdateStatus(\hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark});
+64     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : hidden\_obstacle)
+65         grid.at(node.first).at(node.second).UpdateStatus(\hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\_mark});
+66 \}
 \end{DoxyCode}
 \index{Map@{Map}!Availability@{Availability}}
 \index{Availability@{Availability}!Map@{Map}}
@@ -150,12 +150,12 @@ true if accessible and flase if not
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-185                                                          \{
-186     \textcolor{keywordflow}{if} (position.first < 0 || position.first >= map\_size.first) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-187     \textcolor{keywordflow}{if} (position.second < 0 || position.second >= map\_size.second) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-188     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentStatus()
-189            != \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark};
-190 \}
+207                                                          \{
+208     \textcolor{keywordflow}{if} (position.first < 0 || position.first >= map\_size.first) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+209     \textcolor{keywordflow}{if} (position.second < 0 || position.second >= map\_size.second) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+210     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentStatus()
+211            != \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark};
+212 \}
 \end{DoxyCode}
 \index{Map@{Map}!Calculate\+Cell\+Key@{Calculate\+Cell\+Key}}
 \index{Calculate\+Cell\+Key@{Calculate\+Cell\+Key}!Map@{Map}}
@@ -178,9 +178,9 @@ the key value, which is the priority in next search
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-85                                                                     \{
-86     \textcolor{keywordflow}{return} std::min(\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(position), \hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(position));
-87 \}
+107                                                                     \{
+108     \textcolor{keywordflow}{return} std::min(\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(position), \hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(position));
+109 \}
 \end{DoxyCode}
 \index{Map@{Map}!Compute\+Cost@{Compute\+Cost}}
 \index{Compute\+Cost@{Compute\+Cost}!Map@{Map}}
@@ -206,17 +206,17 @@ cost to travel
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-147                                                                 \{
-148     \textcolor{keywordflow}{if} (!\hyperlink{classMap_a5fe94fd021d5058ecab454ef937b2afe}{Availability}(next\_position)) \textcolor{keywordflow}{return} \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
-149     \textcolor{keywordflow}{if} (std::abs(current\_position.first - next\_position.first) +
-150         std::abs(current\_position.second - next\_position.second) == 1)
-151         \textcolor{keywordflow}{return} \hyperlink{classMap_ac42d63e94fc2df264c2f280451f9003e}{transitional\_cost};
-152     \textcolor{keywordflow}{if} (std::abs(current\_position.first - next\_position.first) +
-153         std::abs(current\_position.second - next\_position.second) == 2)
-154         \textcolor{keywordflow}{return} \hyperlink{classMap_a950831ea68de36caa8d0949f2d2cdc5e}{diagonal\_cost};
-155     \textcolor{keywordflow}{else}
-156         \textcolor{keywordflow}{return} \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
-157 \}
+169                                                                 \{
+170     \textcolor{keywordflow}{if} (!\hyperlink{classMap_a5fe94fd021d5058ecab454ef937b2afe}{Availability}(next\_position)) \textcolor{keywordflow}{return} \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
+171     \textcolor{keywordflow}{if} (std::abs(current\_position.first - next\_position.first) +
+172         std::abs(current\_position.second - next\_position.second) == 1)
+173         \textcolor{keywordflow}{return} \hyperlink{classMap_ac42d63e94fc2df264c2f280451f9003e}{transitional\_cost};
+174     \textcolor{keywordflow}{if} (std::abs(current\_position.first - next\_position.first) +
+175         std::abs(current\_position.second - next\_position.second) == 2)
+176         \textcolor{keywordflow}{return} \hyperlink{classMap_a950831ea68de36caa8d0949f2d2cdc5e}{diagonal\_cost};
+177     \textcolor{keywordflow}{else}
+178         \textcolor{keywordflow}{return} \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
+179 \}
 \end{DoxyCode}
 \index{Map@{Map}!Current\+CellG@{Current\+CellG}}
 \index{Current\+CellG@{Current\+CellG}!Map@{Map}}
@@ -239,9 +239,9 @@ cell\textquotesingle{}s g-\/value
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-67                                                                 \{
-68     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentG();
-69 \}
+89                                                                 \{
+90     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentG();
+91 \}
 \end{DoxyCode}
 \index{Map@{Map}!Current\+Cell\+Rhs@{Current\+Cell\+Rhs}}
 \index{Current\+Cell\+Rhs@{Current\+Cell\+Rhs}!Map@{Map}}
@@ -264,9 +264,9 @@ cell\textquotesingle{}s rhs-\/value
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-76                                                                   \{
-77     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentRhs();
-78 \}
+98                                                                   \{
+99     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentRhs();
+100 \}
 \end{DoxyCode}
 \index{Map@{Map}!Current\+Cell\+Status@{Current\+Cell\+Status}}
 \index{Current\+Cell\+Status@{Current\+Cell\+Status}!Map@{Map}}
@@ -289,9 +289,9 @@ cell\textquotesingle{}s status
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-94                                                                         \{
-95     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentStatus();
-96 \}
+116                                                                         \{
+117     \textcolor{keywordflow}{return} grid.at(position.first).at(position.second).CurrentStatus();
+118 \}
 \end{DoxyCode}
 \index{Map@{Map}!Find\+Neighbors@{Find\+Neighbors}}
 \index{Find\+Neighbors@{Find\+Neighbors}!Map@{Map}}
@@ -314,21 +314,21 @@ a set of eight neighbors that are reachable
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-165                                         \{
-166     std::vector<std::pair<int, int>> neighbors = \{\};
-167     std::vector<int> search\_neighbor = \{-1, 0, 1\};
-168     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &i : search\_neighbor) \{
-169         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &j : search\_neighbor) \{
-170             \textcolor{keyword}{auto} neighbor = std::make\_pair(position.first + i,
-171                                            position.second + j);
-172             \textcolor{keyword}{auto} cost = \hyperlink{classMap_a011926cea282559f37768dadadf46f69}{ComputeCost}(position, neighbor);
-173             \textcolor{keywordflow}{if} (cost == \hyperlink{classMap_ac42d63e94fc2df264c2f280451f9003e}{transitional\_cost} || cost == 
+187                                         \{
+188     std::vector<std::pair<int, int>> neighbors = \{\};
+189     std::vector<int> search\_neighbor = \{-1, 0, 1\};
+190     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &i : search\_neighbor) \{
+191         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &j : search\_neighbor) \{
+192             \textcolor{keyword}{auto} neighbor = std::make\_pair(position.first + i,
+193                                            position.second + j);
+194             \textcolor{keyword}{auto} cost = \hyperlink{classMap_a011926cea282559f37768dadadf46f69}{ComputeCost}(position, neighbor);
+195             \textcolor{keywordflow}{if} (cost == \hyperlink{classMap_ac42d63e94fc2df264c2f280451f9003e}{transitional\_cost} || cost == 
       \hyperlink{classMap_a950831ea68de36caa8d0949f2d2cdc5e}{diagonal\_cost})
-174                 neighbors.push\_back(neighbor);
-175         \}
-176     \}
-177     \textcolor{keywordflow}{return} neighbors;
-178 \}
+196                 neighbors.push\_back(neighbor);
+197         \}
+198     \}
+199     \textcolor{keywordflow}{return} neighbors;
+200 \}
 \end{DoxyCode}
 \index{Map@{Map}!Get\+Goal@{Get\+Goal}}
 \index{Get\+Goal@{Get\+Goal}!Map@{Map}}
@@ -346,7 +346,7 @@ the position of the goal
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-60 \{ \textcolor{keywordflow}{return} goal; \}
+82 \{ \textcolor{keywordflow}{return} goal; \}
 \end{DoxyCode}
 \index{Map@{Map}!Print\+Result@{Print\+Result}}
 \index{Print\+Result@{Print\+Result}!Map@{Map}}
@@ -361,26 +361,26 @@ Visualize the map and the path the robot has traveled on the terminal.
 
 
 \begin{DoxyCode}
-222                       \{
-223     std::vector<std::string> lines(map\_size.second, \textcolor{stringliteral}{"----"});
-224     std::cout << \textcolor{stringliteral}{"Result: "} << std::endl
-225         << \textcolor{stringliteral}{"start: "} << \hyperlink{classMap_a3f12dcec30f23abce2b791c17189ef97}{start\_mark} << \textcolor{stringliteral}{" goal: "} << \hyperlink{classMap_a685d385115aaab17c7bcd3f0b2f95664}{goal\_mark} << \textcolor{stringliteral}{" robot: "}
-226         << \hyperlink{classMap_ab8cb02a3b688f51338598f14d7916db9}{robot\_mark} << \textcolor{stringliteral}{" obstacle: "} << \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark} << \textcolor{stringliteral}{" unknown: "}
-227         << \hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\_mark} << std::endl;
-228     std::cout << \textcolor{stringliteral}{" -"};
-229     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
-230     std::cout << std::endl;
-231     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &row : grid) \{
-232         std::cout << \textcolor{stringliteral}{" | "};
-233         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &cell : row) \{
-234             std::cout << cell.CurrentStatus() << \textcolor{stringliteral}{" | "};
-235         \}
-236         std::cout << std::endl << \textcolor{stringliteral}{" -"};
-237         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
-238         std::cout << std::endl;
-239     \}
-240     std::cout << std::endl;
-241 \}
+244                       \{
+245     std::vector<std::string> lines(map\_size.second, \textcolor{stringliteral}{"----"});
+246     std::cout << \textcolor{stringliteral}{"Result: "} << std::endl
+247         << \textcolor{stringliteral}{"start: "} << \hyperlink{classMap_a3f12dcec30f23abce2b791c17189ef97}{start\_mark} << \textcolor{stringliteral}{" goal: "} << \hyperlink{classMap_a685d385115aaab17c7bcd3f0b2f95664}{goal\_mark} << \textcolor{stringliteral}{" robot: "}
+248         << \hyperlink{classMap_ab8cb02a3b688f51338598f14d7916db9}{robot\_mark} << \textcolor{stringliteral}{" obstacle: "} << \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark} << \textcolor{stringliteral}{" unknown: "}
+249         << \hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\_mark} << std::endl;
+250     std::cout << \textcolor{stringliteral}{" -"};
+251     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+252     std::cout << std::endl;
+253     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &row : grid) \{
+254         std::cout << \textcolor{stringliteral}{" | "};
+255         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &cell : row) \{
+256             std::cout << cell.CurrentStatus() << \textcolor{stringliteral}{" | "};
+257         \}
+258         std::cout << std::endl << \textcolor{stringliteral}{" -"};
+259         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+260         std::cout << std::endl;
+261     \}
+262     std::cout << std::endl;
+263 \}
 \end{DoxyCode}
 \index{Map@{Map}!Print\+Value@{Print\+Value}}
 \index{Print\+Value@{Print\+Value}!Map@{Map}}
@@ -395,25 +395,25 @@ Visualize all g-\/values and rhs-\/values in the map on the terminal.
 
 
 \begin{DoxyCode}
-197                      \{
-198     std::vector<std::string> lines(map\_size.second, \textcolor{stringliteral}{"-------------"});
-199     std::cout << \textcolor{stringliteral}{"Value for shortest path:"} << std::endl
-200         << \textcolor{stringliteral}{"(g, rhs): "} << std::endl<< \textcolor{stringliteral}{" -"};
-201     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
-202     std::cout << std::endl;
-203     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &row : grid) \{
-204         std::cout << \textcolor{stringliteral}{" | "};
-205         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &cell : row) \{
-206             std::cout << \textcolor{stringliteral}{"("} << std::setfill(\textcolor{charliteral}{' '}) << std::setw(3)
-207                       << cell.CurrentG() << \textcolor{stringliteral}{", "}  << std::setfill(\textcolor{charliteral}{' '})
-208                       << std::setw(3) << cell.CurrentRhs() << \textcolor{stringliteral}{") | "};
-209         \}
-210         std::cout << std::endl << \textcolor{stringliteral}{" -"};
-211         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
-212         std::cout << std::endl;
-213     \}
-214     std::cout << std::endl;
-215 \}
+219                      \{
+220     std::vector<std::string> lines(map\_size.second, \textcolor{stringliteral}{"-------------"});
+221     std::cout << \textcolor{stringliteral}{"Value for shortest path:"} << std::endl
+222         << \textcolor{stringliteral}{"(g, rhs): "} << std::endl<< \textcolor{stringliteral}{" -"};
+223     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+224     std::cout << std::endl;
+225     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &row : grid) \{
+226         std::cout << \textcolor{stringliteral}{" | "};
+227         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &cell : row) \{
+228             std::cout << \textcolor{stringliteral}{"("} << std::setfill(\textcolor{charliteral}{' '}) << std::setw(3)
+229                       << cell.CurrentG() << \textcolor{stringliteral}{", "}  << std::setfill(\textcolor{charliteral}{' '})
+230                       << std::setw(3) << cell.CurrentRhs() << \textcolor{stringliteral}{") | "};
+231         \}
+232         std::cout << std::endl << \textcolor{stringliteral}{" -"};
+233         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} line : lines) std::cout << line;
+234         std::cout << std::endl;
+235     \}
+236     std::cout << std::endl;
+237 \}
 \end{DoxyCode}
 \index{Map@{Map}!Set\+Goal@{Set\+Goal}}
 \index{Set\+Goal@{Set\+Goal}!Map@{Map}}
@@ -436,10 +436,10 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-51                                                    \{
-52     goal = new\_goal;
-53     \hyperlink{classMap_a6744cd1fd471d8c68699fbf919c7d983}{UpdateCellStatus}(new\_goal, \hyperlink{classMap_a685d385115aaab17c7bcd3f0b2f95664}{goal\_mark});
-54 \}
+73                                                    \{
+74     goal = new\_goal;
+75     \hyperlink{classMap_a6744cd1fd471d8c68699fbf919c7d983}{UpdateCellStatus}(new\_goal, \hyperlink{classMap_a685d385115aaab17c7bcd3f0b2f95664}{goal\_mark});
+76 \}
 \end{DoxyCode}
 \index{Map@{Map}!Set\+Infiity\+CellG@{Set\+Infiity\+CellG}}
 \index{Set\+Infiity\+CellG@{Set\+Infiity\+CellG}!Map@{Map}}
@@ -462,9 +462,9 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-136                                                            \{
-137     \hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{UpdateCellG}(position, \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost});
-138 \}
+158                                                            \{
+159     \hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{UpdateCellG}(position, \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost});
+160 \}
 \end{DoxyCode}
 \index{Map@{Map}!Update\+CellG@{Update\+CellG}}
 \index{Update\+CellG@{Update\+CellG}!Map@{Map}}
@@ -490,9 +490,9 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-105                                            \{
-106     grid.at(position.first).at(position.second).UpdateG(new\_g);
-107 \}
+127                                            \{
+128     grid.at(position.first).at(position.second).UpdateG(new\_g);
+129 \}
 \end{DoxyCode}
 \index{Map@{Map}!Update\+Cell\+Rhs@{Update\+Cell\+Rhs}}
 \index{Update\+Cell\+Rhs@{Update\+Cell\+Rhs}!Map@{Map}}
@@ -518,9 +518,9 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-116                                                \{
-117     grid.at(position.first).at(position.second).UpdateRhs(new\_rhs);
-118 \}
+138                                                \{
+139     grid.at(position.first).at(position.second).UpdateRhs(new\_rhs);
+140 \}
 \end{DoxyCode}
 \index{Map@{Map}!Update\+Cell\+Status@{Update\+Cell\+Status}}
 \index{Update\+Cell\+Status@{Update\+Cell\+Status}!Map@{Map}}
@@ -546,9 +546,9 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-127                                                         \{
-128     grid.at(position.first).at(position.second).UpdateStatus(new\_status);
-129 \}
+149                                                         \{
+150     grid.at(position.first).at(position.second).UpdateStatus(new\_status);
+151 \}
 \end{DoxyCode}
 
 

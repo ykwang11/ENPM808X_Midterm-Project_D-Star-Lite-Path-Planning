@@ -29,8 +29,6 @@
  *
  * @brief D* Lite Path Planning
  *
- * @section Description
- *
  * This class saves the information of the robot.
  * 
  */

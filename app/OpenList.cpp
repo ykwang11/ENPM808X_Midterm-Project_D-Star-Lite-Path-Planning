@@ -29,8 +29,6 @@
  *
  * @brief D* Lite Path Planning
  *
- * @section Description
- *
  * This class saves candidate nodes to search in minimum heap data structure.
  * 
  */

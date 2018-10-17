@@ -29,8 +29,6 @@
  *
  * @brief D* Lite Path Planning
  *
- * @section Description
- *
  * This program plans the path of the robot, re-plan new path when the map 
  * changes and moves the robot to avoid obstacles. That is, it performs the 
  * D* Lite algorithm.

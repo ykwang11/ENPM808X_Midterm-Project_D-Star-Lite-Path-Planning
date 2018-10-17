@@ -105,10 +105,12 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>D* Lite Path Planning. </p>
+<p>MIT Licence Copyright (c) 2018 Yu-Kai Wang</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 <dl class="section author"><dt>Author</dt><dd>Yu-Kai Wang </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>MIT License</dd></dl>
-<h1><a class="anchor" id="Description"></a>
-Description</h1>
 <p>Test cases for the "Robot" class </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a8bccc78fa46d35af4867502f4e443a5d"></a>
@@ -134,14 +136,14 @@ Description</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                           {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">// test robot&#39;s constructor</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="../../de/d78/classRobot.html">Robot</a> robot_test(std::make_pair(0, 0));</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    EXPECT_EQ(robot_test.CurrentPosition(), std::make_pair(0, 0));</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// test robot&#39;s action</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    robot_test.Move(std::make_pair(1, 2));</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    EXPECT_EQ(robot_test.CurrentPosition(), std::make_pair(1, 2));</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div><div class="ttc" id="classRobot_html"><div class="ttname"><a href="../../de/d78/classRobot.html">Robot</a></div><div class="ttdef"><b>Definition:</b> Robot.h:7</div></div>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                           {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// test robot&#39;s constructor</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="../../de/d78/classRobot.html">Robot</a> robot_test(std::make_pair(0, 0));</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    EXPECT_EQ(robot_test.CurrentPosition(), std::make_pair(0, 0));</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// test robot&#39;s action</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    robot_test.Move(std::make_pair(1, 2));</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    EXPECT_EQ(robot_test.CurrentPosition(), std::make_pair(1, 2));</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div><div class="ttc" id="classRobot_html"><div class="ttname"><a href="../../de/d78/classRobot.html">Robot</a></div><div class="ttdef"><b>Definition:</b> Robot.h:41</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 16 2018 17:11:12 for Warehouse Bot by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 16 2018 19:44:13 for Warehouse Bot by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

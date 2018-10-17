@@ -38,14 +38,14 @@ true if the node exsit and false if not
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-94                                                                \{
-95     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : priority\_queue) \{
-96         \textcolor{keywordflow}{if} (std::get<1>(node) == node\_to\_find.first &&
-97             std::get<2>(node) == node\_to\_find.second)
-98             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-99     \}
-100     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-101 \}
+116                                                                \{
+117     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &node : priority\_queue) \{
+118         \textcolor{keywordflow}{if} (std::get<1>(node) == node\_to\_find.first &&
+119             std::get<2>(node) == node\_to\_find.second)
+120             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+121     \}
+122     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+123 \}
 \end{DoxyCode}
 \index{Open\+List@{Open\+List}!Insert@{Insert}}
 \index{Insert@{Insert}!Open\+List@{Open\+List}}
@@ -71,12 +71,12 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-25                                                          \{
-26     priority\_queue.push\_back(std::make\_tuple(
-27                              new\_key, new\_node.first, new\_node.second));
-28     std::push\_heap(priority\_queue.begin(),
-29                    priority\_queue.end(), std::greater<>());
-30 \}
+47                                                          \{
+48     priority\_queue.push\_back(std::make\_tuple(
+49                              new\_key, new\_node.first, new\_node.second));
+50     std::push\_heap(priority\_queue.begin(),
+51                    priority\_queue.end(), std::greater<>());
+52 \}
 \end{DoxyCode}
 \index{Open\+List@{Open\+List}!Pop@{Pop}}
 \index{Pop@{Pop}!Open\+List@{Open\+List}}
@@ -94,16 +94,16 @@ the top node\textquotesingle{}s priority in searching and its position
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-79                                                  \{
-80     std::pop\_heap(priority\_queue.begin(),
-81                   priority\_queue.end(), std::greater<>());
-82     \textcolor{keyword}{auto} top\_node = priority\_queue.back();
-83     priority\_queue.pop\_back();
-84     \textcolor{keyword}{auto} key = std::get<0>(top\_node);
-85     \textcolor{keyword}{auto} position = std::make\_pair(std::get<1>(top\_node),
-86                                    std::get<2>(top\_node));
-87     \textcolor{keywordflow}{return} std::make\_pair(key, position);
-88 \}
+101                                                  \{
+102     std::pop\_heap(priority\_queue.begin(),
+103                   priority\_queue.end(), std::greater<>());
+104     \textcolor{keyword}{auto} top\_node = priority\_queue.back();
+105     priority\_queue.pop\_back();
+106     \textcolor{keyword}{auto} key = std::get<0>(top\_node);
+107     \textcolor{keyword}{auto} position = std::make\_pair(std::get<1>(top\_node),
+108                                    std::get<2>(top\_node));
+109     \textcolor{keywordflow}{return} std::make\_pair(key, position);
+110 \}
 \end{DoxyCode}
 \index{Open\+List@{Open\+List}!Remove@{Remove}}
 \index{Remove@{Remove}!Open\+List@{Open\+List}}
@@ -126,13 +126,13 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-56                                                    \{
-57     \textcolor{keywordtype}{double} min\_key = -1.0;
-58     \hyperlink{classOpenList_a197566325e2a0df8ec00b6470752c7b7}{UpdateKey}(min\_key, node);
-59     std::pop\_heap(priority\_queue.begin(),
-60                   priority\_queue.end(), std::greater<>());
-61     priority\_queue.pop\_back();
-62 \}
+78                                                    \{
+79     \textcolor{keywordtype}{double} min\_key = -1.0;
+80     \hyperlink{classOpenList_a197566325e2a0df8ec00b6470752c7b7}{UpdateKey}(min\_key, node);
+81     std::pop\_heap(priority\_queue.begin(),
+82                   priority\_queue.end(), std::greater<>());
+83     priority\_queue.pop\_back();
+84 \}
 \end{DoxyCode}
 \index{Open\+List@{Open\+List}!Top@{Top}}
 \index{Top@{Top}!Open\+List@{Open\+List}}
@@ -150,12 +150,12 @@ the top node\textquotesingle{}s priority in searching and its position
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-68                                                        \{
-69     \textcolor{keyword}{auto} key = std::get<0>(priority\_queue.front());
-70     \textcolor{keyword}{auto} position = std::make\_pair(std::get<1>(priority\_queue.front()),
-71                                    std::get<2>(priority\_queue.front()));
-72     \textcolor{keywordflow}{return} std::make\_pair(key, position);
-73 \}
+90                                                        \{
+91     \textcolor{keyword}{auto} key = std::get<0>(priority\_queue.front());
+92     \textcolor{keyword}{auto} position = std::make\_pair(std::get<1>(priority\_queue.front()),
+93                                    std::get<2>(priority\_queue.front()));
+94     \textcolor{keywordflow}{return} std::make\_pair(key, position);
+95 \}
 \end{DoxyCode}
 \index{Open\+List@{Open\+List}!Update\+Key@{Update\+Key}}
 \index{Update\+Key@{Update\+Key}!Open\+List@{Open\+List}}
@@ -181,17 +181,17 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-39                                                             \{
-40     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} &node : priority\_queue) \{
-41         \textcolor{keywordflow}{if} (std::get<1>(node) == position.first &&
-42             std::get<2>(node) == position.second) \{
-43             std::get<0>(node) = new\_key;
-44             \textcolor{keywordflow}{break};
-45         \}
-46     \}
-47     std::make\_heap(priority\_queue.begin(),
-48                    priority\_queue.end(), std::greater<>());
-49 \}
+61                                                             \{
+62     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} &node : priority\_queue) \{
+63         \textcolor{keywordflow}{if} (std::get<1>(node) == position.first &&
+64             std::get<2>(node) == position.second) \{
+65             std::get<0>(node) = new\_key;
+66             \textcolor{keywordflow}{break};
+67         \}
+68     \}
+69     std::make\_heap(priority\_queue.begin(),
+70                    priority\_queue.end(), std::greater<>());
+71 \}
 \end{DoxyCode}
 
 

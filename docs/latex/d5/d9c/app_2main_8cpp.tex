@@ -51,16 +51,16 @@ minimum rhs
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-156                                                                     \{
-157     \textcolor{keywordtype}{double} min\_rhs = map\_ptr->\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
-158     \textcolor{keyword}{auto} neibors = map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(vertex);
-159     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &next\_vertex : neibors) \{
-160         \textcolor{keyword}{auto} temp\_rhs = map\_ptr->\hyperlink{classMap_a011926cea282559f37768dadadf46f69}{ComputeCost}(vertex, next\_vertex) +
-161                         map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(next\_vertex);
-162         \textcolor{keywordflow}{if} (temp\_rhs < min\_rhs) min\_rhs = temp\_rhs;
-163     \}
-164     \textcolor{keywordflow}{return} min\_rhs;
-165 \}
+178                                                                     \{
+179     \textcolor{keywordtype}{double} min\_rhs = map\_ptr->\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
+180     \textcolor{keyword}{auto} neibors = map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(vertex);
+181     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &next\_vertex : neibors) \{
+182         \textcolor{keyword}{auto} temp\_rhs = map\_ptr->\hyperlink{classMap_a011926cea282559f37768dadadf46f69}{ComputeCost}(vertex, next\_vertex) +
+183                         map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(next\_vertex);
+184         \textcolor{keywordflow}{if} (temp\_rhs < min\_rhs) min\_rhs = temp\_rhs;
+185     \}
+186     \textcolor{keywordflow}{return} min\_rhs;
+187 \}
 \end{DoxyCode}
 \index{app/main.\+cpp@{app/main.\+cpp}!Compute\+Next\+Potision@{Compute\+Next\+Potision}}
 \index{Compute\+Next\+Potision@{Compute\+Next\+Potision}!app/main.\+cpp@{app/main.\+cpp}}
@@ -86,19 +86,19 @@ next position in the shortest path
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-174                                                                              \{
-175     \textcolor{keyword}{auto} next\_position = current\_position;
-176     \textcolor{keywordtype}{double} cheaest\_cost = map\_ptr->\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
-177     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &candidate : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(current\_position)) \{
-178         \textcolor{keyword}{auto} cost = map\_ptr->\hyperlink{classMap_a011926cea282559f37768dadadf46f69}{ComputeCost}(current\_position, candidate) +
-179                     map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(candidate);
-180         \textcolor{keywordflow}{if} (cost < cheaest\_cost) \{
-181             cheaest\_cost = cost;
-182             next\_position = candidate;
-183         \}
-184     \}
-185     \textcolor{keywordflow}{return} next\_position;
-186 \}
+196                                                                              \{
+197     \textcolor{keyword}{auto} next\_position = current\_position;
+198     \textcolor{keywordtype}{double} cheaest\_cost = map\_ptr->\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost};
+199     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &candidate : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(current\_position)) \{
+200         \textcolor{keyword}{auto} cost = map\_ptr->\hyperlink{classMap_a011926cea282559f37768dadadf46f69}{ComputeCost}(current\_position, candidate) +
+201                     map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(candidate);
+202         \textcolor{keywordflow}{if} (cost < cheaest\_cost) \{
+203             cheaest\_cost = cost;
+204             next\_position = candidate;
+205         \}
+206     \}
+207     \textcolor{keywordflow}{return} next\_position;
+208 \}
 \end{DoxyCode}
 \index{app/main.\+cpp@{app/main.\+cpp}!Compute\+Shortest\+Path@{Compute\+Shortest\+Path}}
 \index{Compute\+Shortest\+Path@{Compute\+Shortest\+Path}!app/main.\+cpp@{app/main.\+cpp}}
@@ -127,37 +127,37 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-98                                                                \{
-99     \textcolor{keywordflow}{while} (openlist\_ptr->\hyperlink{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}{Top}().first <
-100            map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(robot.\hyperlink{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{CurrentPosition}()) ||
-101            map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(robot.\hyperlink{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{CurrentPosition}()) !=
-102            map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(robot.\hyperlink{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{CurrentPosition}())) \{
-103         \textcolor{keyword}{auto} key\_and\_node = openlist\_ptr->\hyperlink{classOpenList_a6729ec1717dd8382b6054cc5dd2d873b}{Pop}();
-104         \textcolor{keyword}{auto} node = key\_and\_node.second;
-105 
-106         \textcolor{keyword}{auto} old\_key = key\_and\_node.first;
-107         \textcolor{keyword}{auto} new\_key = map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(node);
-108 
-109         \textcolor{keywordflow}{if} (old\_key < new\_key) \{
-110             openlist\_ptr->\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(new\_key, node);
-111         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(node) >
-112                    map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(node)) \{
-113             map\_ptr->\hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{UpdateCellG}(node, map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(node));
-114             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &vertex : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(node)) \{
-115                 \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(vertex, map\_ptr, openlist\_ptr);
-116             \}
-117         \} \textcolor{keywordflow}{else} \{
-118             map\_ptr->\hyperlink{classMap_ab6e992e3c5064f1837fafd3547d9891a}{SetInfiityCellG}(node);
-119             \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(node, map\_ptr, openlist\_ptr);
-120             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &vertex : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(node)) \{
-121                 \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(vertex, map\_ptr, openlist\_ptr);
-122             \}
-123         \}
-124     \}
-125     \textcolor{comment}{// Show the new computed shortest path.}
-126     map\_ptr->\hyperlink{classMap_a74f72513109a895c313de5bfbecb3735}{PrintValue}();
-127     map\_ptr->\hyperlink{classMap_a807b37ec77cdc14d635399b1c1eb7099}{PrintResult}();
-128 \}
+120                                                                \{
+121     \textcolor{keywordflow}{while} (openlist\_ptr->\hyperlink{classOpenList_a7c4ed2e5e4ee02f789873059af2322fe}{Top}().first <
+122            map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(robot.\hyperlink{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{CurrentPosition}()) ||
+123            map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(robot.\hyperlink{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{CurrentPosition}()) !=
+124            map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(robot.\hyperlink{classRobot_a42ea659284dacbdf258bc1e2ca29286e}{CurrentPosition}())) \{
+125         \textcolor{keyword}{auto} key\_and\_node = openlist\_ptr->\hyperlink{classOpenList_a6729ec1717dd8382b6054cc5dd2d873b}{Pop}();
+126         \textcolor{keyword}{auto} node = key\_and\_node.second;
+127 
+128         \textcolor{keyword}{auto} old\_key = key\_and\_node.first;
+129         \textcolor{keyword}{auto} new\_key = map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(node);
+130 
+131         \textcolor{keywordflow}{if} (old\_key < new\_key) \{
+132             openlist\_ptr->\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(new\_key, node);
+133         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(node) >
+134                    map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(node)) \{
+135             map\_ptr->\hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{UpdateCellG}(node, map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(node));
+136             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &vertex : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(node)) \{
+137                 \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(vertex, map\_ptr, openlist\_ptr);
+138             \}
+139         \} \textcolor{keywordflow}{else} \{
+140             map\_ptr->\hyperlink{classMap_ab6e992e3c5064f1837fafd3547d9891a}{SetInfiityCellG}(node);
+141             \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(node, map\_ptr, openlist\_ptr);
+142             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &vertex : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(node)) \{
+143                 \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(vertex, map\_ptr, openlist\_ptr);
+144             \}
+145         \}
+146     \}
+147     \textcolor{comment}{// Show the new computed shortest path.}
+148     map\_ptr->\hyperlink{classMap_a74f72513109a895c313de5bfbecb3735}{PrintValue}();
+149     map\_ptr->\hyperlink{classMap_a807b37ec77cdc14d635399b1c1eb7099}{PrintResult}();
+150 \}
 \end{DoxyCode}
 \index{app/main.\+cpp@{app/main.\+cpp}!Detect\+Hidden\+Obstacle@{Detect\+Hidden\+Obstacle}}
 \index{Detect\+Hidden\+Obstacle@{Detect\+Hidden\+Obstacle}!app/main.\+cpp@{app/main.\+cpp}}
@@ -186,29 +186,29 @@ if there are hidden obstacle around
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-196                                                                 \{
-197     \textcolor{keyword}{auto} is\_changed = \textcolor{keyword}{false};
-198     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &candidate : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(current\_position)) \{
-199         \textcolor{keywordflow}{if} (map\_ptr->\hyperlink{classMap_a917164441063705c869d8bcf54424710}{CurrentCellStatus}(candidate) == map\_ptr->
+218                                                                 \{
+219     \textcolor{keyword}{auto} is\_changed = \textcolor{keyword}{false};
+220     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &candidate : map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(current\_position)) \{
+221         \textcolor{keywordflow}{if} (map\_ptr->\hyperlink{classMap_a917164441063705c869d8bcf54424710}{CurrentCellStatus}(candidate) == map\_ptr->
       \hyperlink{classMap_a4b9db3b7db8399a2689cbfa6ec179c47}{unknown\_mark}) \{
-200             map\_ptr->\hyperlink{classMap_a6744cd1fd471d8c68699fbf919c7d983}{UpdateCellStatus}(candidate, map\_ptr->
+222             map\_ptr->\hyperlink{classMap_a6744cd1fd471d8c68699fbf919c7d983}{UpdateCellStatus}(candidate, map\_ptr->
       \hyperlink{classMap_ae4e70862cf5853df223ba019dcc4f0df}{obstacle\_mark});
-201 
-202             is\_changed = \textcolor{keyword}{true};
-203             \textcolor{comment}{// Update node's status}
-204             \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(candidate, map\_ptr, openlist\_ptr);
-205 
-206             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &candidate\_neighbor :
-207                              map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(candidate)) \{
-208                 \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(candidate\_neighbor, map\_ptr, openlist\_ptr);
-209             \}
-210             map\_ptr->\hyperlink{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{UpdateCellRhs}(candidate, map\_ptr->
+223 
+224             is\_changed = \textcolor{keyword}{true};
+225             \textcolor{comment}{// Update node's status}
+226             \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(candidate, map\_ptr, openlist\_ptr);
+227 
+228             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} &candidate\_neighbor :
+229                              map\_ptr->\hyperlink{classMap_acc6914f9c0c82c43a340f734444b5ead}{FindNeighbors}(candidate)) \{
+230                 \hyperlink{app_2main_8cpp_ac1fccc69977dfa7e6ae7e5515802320c}{UpdateVertex}(candidate\_neighbor, map\_ptr, openlist\_ptr);
+231             \}
+232             map\_ptr->\hyperlink{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{UpdateCellRhs}(candidate, map\_ptr->
       \hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost});
-211             map\_ptr->\hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{UpdateCellG}(candidate, map\_ptr->\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost});
-212         \}
-213     \}
-214     \textcolor{keywordflow}{return} is\_changed;
-215 \}
+233             map\_ptr->\hyperlink{classMap_a0a3708f12f41a129ce01de2e1b329b77}{UpdateCellG}(candidate, map\_ptr->\hyperlink{classMap_a7867cabde1810b3f35fe68a5bb79d21f}{infinity\_cost});
+234         \}
+235     \}
+236     \textcolor{keywordflow}{return} is\_changed;
+237 \}
 \end{DoxyCode}
 \index{app/main.\+cpp@{app/main.\+cpp}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!app/main.\+cpp@{app/main.\+cpp}}
@@ -234,14 +234,14 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-81                                                       \{
-82     \textcolor{comment}{// One lookahead cost of the goal must be zero}
-83     \textcolor{keyword}{auto} goal\_rhs = 0.0;
-84     map\_ptr->\hyperlink{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{UpdateCellRhs}(map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}(), goal\_rhs);
-85     \textcolor{comment}{// Insert the goal to open list}
-86     \textcolor{keyword}{auto} new\_key = map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}());
-87     openlist\_ptr->\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(new\_key, map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}());
-88 \}
+103                                                       \{
+104     \textcolor{comment}{// One lookahead cost of the goal must be zero}
+105     \textcolor{keyword}{auto} goal\_rhs = 0.0;
+106     map\_ptr->\hyperlink{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{UpdateCellRhs}(map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}(), goal\_rhs);
+107     \textcolor{comment}{// Insert the goal to open list}
+108     \textcolor{keyword}{auto} new\_key = map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}());
+109     openlist\_ptr->\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(new\_key, map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}());
+110 \}
 \end{DoxyCode}
 \index{app/main.\+cpp@{app/main.\+cpp}!main@{main}}
 \index{main@{main}!app/main.\+cpp@{app/main.\+cpp}}
@@ -252,48 +252,48 @@ none
 )}\hypertarget{app_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{app_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
 
 \begin{DoxyCode}
-32            \{
-33     \textcolor{comment}{// Declaration}
-34     \hyperlink{classRobot}{Robot} robot(std::make\_pair(2, 4));
-35     \hyperlink{classMap}{Map} map(4, 5);
-36     std::vector<std::pair<int, int>> obstacle, hidden\_obstacle;
-37     \hyperlink{classOpenList}{OpenList} openlist;
-38 
-39     \textcolor{comment}{// Setting the environment: obstacles. hedden obstacles, the goal, the robot}
-40     obstacle.push\_back(std::make\_pair(1, 1));
-41     obstacle.push\_back(std::make\_pair(0, 2));
-42     obstacle.push\_back(std::make\_pair(1, 2));
-43     hidden\_obstacle.push\_back(std::make\_pair(2, 2));
-44     map.AddObstacle(obstacle, hidden\_obstacle);
-45     map.SetGoal(std::make\_pair(0, 0));
-46     map.UpdateCellStatus(robot.CurrentPosition(), map.start\_mark);
-47 
-48     \textcolor{comment}{// Initialize}
-49     \hyperlink{app_2main_8cpp_a73bfb3e174c30d5edd1b838875e47c41}{Initialize}(&map, &openlist);
-50 
-51     \textcolor{comment}{// Compute shortest path in the beginning}
-52     \hyperlink{app_2main_8cpp_a81acf9efb960a933df2ba59e6bb03172}{ComputeShortestPath}(robot, &map, &openlist);
-53 
-54     \textcolor{comment}{// Keep moving until reach the goal}
-55     \textcolor{keywordflow}{while} (robot.CurrentPosition() != map.GetGoal()) \{
-56         \textcolor{keyword}{auto} next\_position = \hyperlink{app_2main_8cpp_adcc8642ca4167b0471e31504bee4593b}{ComputeNextPotision}(robot.CurrentPosition(), &map);
-57         robot.Move(next\_position);
-58         map.UpdateCellStatus(robot.CurrentPosition(), map.robot\_mark);
-59 
-60         \textcolor{comment}{// Print out every step in the journey}
-61         map.PrintResult();
-62 
-63         \textcolor{comment}{// Detect environmental change}
-64         \textcolor{keyword}{auto} graph\_changed =
-65              \hyperlink{app_2main_8cpp_a4849f8c92cf67cc744047f99119102b6}{DetectHiddenObstacle}(robot.CurrentPosition(), &map, &openlist);
-66 
-67         \textcolor{comment}{// Only re-plan path when robot detects change in the environment.}
-68         \textcolor{keywordflow}{if} (graph\_changed) \hyperlink{app_2main_8cpp_a81acf9efb960a933df2ba59e6bb03172}{ComputeShortestPath}(robot, &map, &openlist);
-69     \}
-70 
-71     std::cout << \textcolor{stringliteral}{"Achieved!"};
-72     \textcolor{keywordflow}{return} 0;
-73 \}
+54            \{
+55     \textcolor{comment}{// Declaration}
+56     \hyperlink{classRobot}{Robot} robot(std::make\_pair(2, 4));
+57     \hyperlink{classMap}{Map} map(4, 5);
+58     std::vector<std::pair<int, int>> obstacle, hidden\_obstacle;
+59     \hyperlink{classOpenList}{OpenList} openlist;
+60 
+61     \textcolor{comment}{// Setting the environment: obstacles. hedden obstacles, the goal, the robot}
+62     obstacle.push\_back(std::make\_pair(1, 1));
+63     obstacle.push\_back(std::make\_pair(0, 2));
+64     obstacle.push\_back(std::make\_pair(1, 2));
+65     hidden\_obstacle.push\_back(std::make\_pair(2, 2));
+66     map.AddObstacle(obstacle, hidden\_obstacle);
+67     map.SetGoal(std::make\_pair(0, 0));
+68     map.UpdateCellStatus(robot.CurrentPosition(), map.start\_mark);
+69 
+70     \textcolor{comment}{// Initialize}
+71     \hyperlink{app_2main_8cpp_a73bfb3e174c30d5edd1b838875e47c41}{Initialize}(&map, &openlist);
+72 
+73     \textcolor{comment}{// Compute shortest path in the beginning}
+74     \hyperlink{app_2main_8cpp_a81acf9efb960a933df2ba59e6bb03172}{ComputeShortestPath}(robot, &map, &openlist);
+75 
+76     \textcolor{comment}{// Keep moving until reach the goal}
+77     \textcolor{keywordflow}{while} (robot.CurrentPosition() != map.GetGoal()) \{
+78         \textcolor{keyword}{auto} next\_position = \hyperlink{app_2main_8cpp_adcc8642ca4167b0471e31504bee4593b}{ComputeNextPotision}(robot.CurrentPosition(), &map);
+79         robot.Move(next\_position);
+80         map.UpdateCellStatus(robot.CurrentPosition(), map.robot\_mark);
+81 
+82         \textcolor{comment}{// Print out every step in the journey}
+83         map.PrintResult();
+84 
+85         \textcolor{comment}{// Detect environmental change}
+86         \textcolor{keyword}{auto} graph\_changed =
+87              \hyperlink{app_2main_8cpp_a4849f8c92cf67cc744047f99119102b6}{DetectHiddenObstacle}(robot.CurrentPosition(), &map, &openlist);
+88 
+89         \textcolor{comment}{// Only re-plan path when robot detects change in the environment.}
+90         \textcolor{keywordflow}{if} (graph\_changed) \hyperlink{app_2main_8cpp_a81acf9efb960a933df2ba59e6bb03172}{ComputeShortestPath}(robot, &map, &openlist);
+91     \}
+92 
+93     std::cout << \textcolor{stringliteral}{"Achieved!"};
+94     \textcolor{keywordflow}{return} 0;
+95 \}
 \end{DoxyCode}
 \index{app/main.\+cpp@{app/main.\+cpp}!Update\+Vertex@{Update\+Vertex}}
 \index{Update\+Vertex@{Update\+Vertex}!app/main.\+cpp@{app/main.\+cpp}}
@@ -322,15 +322,15 @@ none
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-138                                                         \{
-139     \textcolor{keywordflow}{if} (vertex != map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}()) \{
-140         map\_ptr->\hyperlink{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{UpdateCellRhs}(vertex, \hyperlink{app_2main_8cpp_a42ced610597d0540d7add945bccd8559}{ComputeMinRhs}(vertex, map\_ptr));
-141     \}
-142     \textcolor{keywordflow}{if} (openlist\_ptr->\hyperlink{classOpenList_aee52373704c36193c946c54a26cdd1b6}{Find}(vertex)) \{
-143         openlist\_ptr->\hyperlink{classOpenList_a4452fe5d3a98a52df814ca76f017c9bd}{Remove}(vertex);
-144     \}
-145     \textcolor{keywordflow}{if} (map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(vertex) != map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(vertex)) \{
-146         openlist\_ptr->\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(vertex), vertex);
-147     \}
-148 \}
+160                                                         \{
+161     \textcolor{keywordflow}{if} (vertex != map\_ptr->\hyperlink{classMap_a6d7140803e7966217802c36b85a42d53}{GetGoal}()) \{
+162         map\_ptr->\hyperlink{classMap_a7d3ff9b29e3de98a9350b3815ae71372}{UpdateCellRhs}(vertex, \hyperlink{app_2main_8cpp_a42ced610597d0540d7add945bccd8559}{ComputeMinRhs}(vertex, map\_ptr));
+163     \}
+164     \textcolor{keywordflow}{if} (openlist\_ptr->\hyperlink{classOpenList_aee52373704c36193c946c54a26cdd1b6}{Find}(vertex)) \{
+165         openlist\_ptr->\hyperlink{classOpenList_a4452fe5d3a98a52df814ca76f017c9bd}{Remove}(vertex);
+166     \}
+167     \textcolor{keywordflow}{if} (map\_ptr->\hyperlink{classMap_aae2c27feb5f547122e9ea2639770a8d6}{CurrentCellG}(vertex) != map\_ptr->\hyperlink{classMap_aca24bc1a28e9e9d39661a2c1d314c05f}{CurrentCellRhs}(vertex)) \{
+168         openlist\_ptr->\hyperlink{classOpenList_a9fed98c24f74b3251baf50cda69c9028}{Insert}(map\_ptr->\hyperlink{classMap_a85598a8b81937ec7c6cee94053a0a6a1}{CalculateCellKey}(vertex), vertex);
+169     \}
+170 \}
 \end{DoxyCode}

@@ -29,8 +29,6 @@
  *
  * @brief D* Lite Path Planning
  *
- * @section Description
- *
  * This class holds the status of each node in the map.
  * g-values: estamated distances to the goal.
  * rhs-values: one step lookahead values based on the g-values.

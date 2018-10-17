@@ -29,8 +29,6 @@
  *
  * @brief D* Lite Path Planning
  *
- * @section Description
- *
  * This class controls cells in the map and provides all infomation and 
  * all methods that related to the environment.
  * 
