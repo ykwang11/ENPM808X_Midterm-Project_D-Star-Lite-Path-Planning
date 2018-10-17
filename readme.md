@@ -15,7 +15,7 @@ The design process follows the iterative process of a solo programmer (SIP) and 
 
 #Eample:
 At first, the terminal displays g values and rhs values after computing the shortest path based on A* and the visualization.
-g-values: estamates distance to the goal
+g-values: estamates distance to the goal  
 rhs-values: one step lookahead values based on the g values
 ![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-1.png)
 
@@ -29,6 +29,8 @@ That is an incremental search.
 
 At last, the robot reaches goal with the minimum cost.  
 ![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-4.png)
+
+---
 
 ---
 ## Licence
@@ -60,7 +62,8 @@ SOFTWARE.
 ## Install via Command-line  
 
 Clone from the repository, create build folder and build program.  
-  
+
+* Build and make:
 ```
 git clone --recursive https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning.git  
 cd <path to repository>  
@@ -68,8 +71,20 @@ mkdir build
 cd build  
 cmake ..  
 make  
-Run tests: ./test/cpp-test  
-Run program: ./app/shell-app
+```
+* Run tests:  
+```  
+cd build  
+./test/cpp-test  
+```  
+* Run program:   
+```  
+cd build  
+./app/shell-app  
+```  
+* Run Doxygen:  
+```doxygen ./Doxygen``` 
+ 
 ```
 ---
 
