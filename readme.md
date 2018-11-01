@@ -93,6 +93,5 @@ SIP process is recorded in product backlog, iteration backlog, and work log.   [
 
 ---
 ## Reference
-[Link](http://idm-lab.org/bib/abstracts/papers/aaai02b.pdf)
-S. Koenig and M. Likhachev. D* Lite. In Proceedings of the AAAI Conference of Artificial Intelligence (AAAI), 476-483, 2002.
+[S. Koenig and M. Likhachev. D* Lite. In Proceedings of the AAAI Conference of Artificial Intelligence (AAAI), 476-483, 2002.](http://idm-lab.org/bib/abstracts/papers/aaai02b.pdf)
 
