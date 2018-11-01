@@ -13,7 +13,7 @@ Self-driving car has been an important industrial product recently to save milli
 
 The design process follows the iterative process of a solo programmer (SIP) and Test Driving Development (TDD). The project is built on C++ 11/14 framework following Google C++ Style guide. Tools such as “cpplint validation” and “cppcheck” will be used to ensure the quality of codes. Methods were verified by unit testing with Google Test framework.
 
-#Eample:
+# Eample:  
 At first, the terminal displays g values and rhs values after computing the shortest path based on A* and the visualization.  
 g-values: estamates distance to the goal  
 rhs-values: one step lookahead values based on the g values
