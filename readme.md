@@ -89,7 +89,7 @@ doxygen ./Doxygen
 
 ---
 ## SIP Process
-SIP process is recorded in product backlog, iteration backlog, and work log.   [Link](https://drive.google.com/drive/folders/1RUn3eqfVhPALQS88JPey561u3MOfQhIE?usp=sharing)
+[SIP process is recorded in product backlog, iteration backlog, and work log.](https://drive.google.com/drive/folders/1RUn3eqfVhPALQS88JPey561u3MOfQhIE?usp=sharing)
 
 ---
 ## Reference
