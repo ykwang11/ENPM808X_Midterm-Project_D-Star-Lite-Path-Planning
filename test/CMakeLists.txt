@@ -3,13 +3,7 @@ set(GTEST_SHUFFLE 1)
 add_executable(
     cpp-test
     main.cpp
-    CellTest.cpp
-    MapTest.cpp
-    OpenListTest.cpp
     RobotTest.cpp
-    ../app/Cell.cpp
-    ../app/Map.cpp
-    ../app/OpenList.cpp
     ../app/Robot.cpp
 )
 

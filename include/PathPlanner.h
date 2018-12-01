@@ -21,29 +21,39 @@
 */
 
 /**
-* @file Robot.h
+* @file PathPlanner.h
 * @author Yu-Kai Wang
 * @copyright MIT License
 *
 * @brief D* Lite Path Planning
 *
-* This class saves the information of the robot.
+* PathPlanner steers the robot to the goal based on D* Lite algorithm.
 *
 */
 
-#ifndef INCLUDE_ROBOT_H_
-#define INCLUDE_ROBOT_H_
+#ifndef INCLUDE_PATHPLANNER_H_
+#define INCLUDE_PATHPLANNER_H_
 
-#include <utility>
+#include <iostream>
+#include "Map.h"
+#include "OpenList.h"
 
-class Robot {
+class PathPlanner
+{
 public:
-	explicit Robot(const std::pair<int, int> &);
-	virtual std::pair<int, int> getPosition() const;
-	virtual void move(const std::pair<int, int> &);
+	PathPlanner(std::pair<int, int>, std::pair<int, int>, std::vector<std::pair<int, int>>, std::vector<std::pair<int, int>>);
+
+	void computeShortestPath(const std::pair<int, int> &);
+	void updateVertex(const std::pair<int, int> &);
+	double getMinRhs(const std::pair<int, int> &);
+	std::pair<int, int> getNextPotision(const std::pair<int, int> &);
+	bool detectHidden(const std::pair<int, int> &);
+	void setMapTrace(const std::pair<int, int> &);
+	void print();
+
 private:
-	std::pair<int, int> position;
+	Map map = Map(4, 5);
+	OpenList openlist;
 };
 
-
-#endif // INCLUDE_ROBOT_H_
+#endif // INCLUDE_PATHPLANNER_H_

@@ -21,29 +21,29 @@
 */
 
 /**
-* @file Robot.h
+* @file TalkingRobot.h
 * @author Yu-Kai Wang
 * @copyright MIT License
 *
 * @brief D* Lite Path Planning
 *
-* This class saves the information of the robot.
-*
+* The talking robot talks how long it has walked everytime it moves.
+* This is a dummy inherited class for GMock practice.
 */
 
-#ifndef INCLUDE_ROBOT_H_
-#define INCLUDE_ROBOT_H_
+#ifndef INCLUDE_TALKINGROBOT_H_
+#define INCLUDE_TALKINGROBOT_H_
+#include "Robot.h"
+#include <iostream>
 
-#include <utility>
-
-class Robot {
+class TalkingRobot : public Robot
+{
 public:
-	explicit Robot(const std::pair<int, int> &);
-	virtual std::pair<int, int> getPosition() const;
-	virtual void move(const std::pair<int, int> &);
+	TalkingRobot(const std::pair<int, int> &);
+	void move(const std::pair<int, int> &);
 private:
-	std::pair<int, int> position;
+	int distance;
 };
 
+#endif  // INCLUDE_TALKINGROBOT_H_
 
-#endif // INCLUDE_ROBOT_H_
