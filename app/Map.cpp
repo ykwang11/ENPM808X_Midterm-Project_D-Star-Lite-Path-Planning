@@ -42,20 +42,26 @@
 * @return void
 */
 Map::Map(const int &height, const int &width) {
+    int i = 0;
+    int j = 0;
+    std::vector<double> temp; 
+    while (i < height) {
+        rhsValue.push_back(std::vector<double>());
+        gValue.push_back(std::vector<double>());
+        map.push_back(std::vector<double>());
 
-	std::vector<std::vector<double>> value(
-		height,
-		std::vector<double>(width, infinity_cost));
-	rhsValue = value;
-	gValue = value;
-	size = std::make_pair(height, width);
+        j = 0;
+        while (j < width) {
+            rhsValue[i].push_back(infinity_cost);
+            gValue[i].push_back(infinity_cost);
+            map[i].push_back(0.0);
+            j++;
+        }
+        i++;
+    }
 
-	std::vector<std::vector<bool>> position(
-		height,
-		std::vector<bool>(width, false));
-	obstacle = position;
-	hidden = position;
-	trace = position;
+    // set the size of the map.
+    size = std::make_pair(height, width);
 }
 
 /**
@@ -65,23 +71,13 @@ Map::Map(const int &height, const int &width) {
 * @return void
 */
 void Map::setObstacle(const std::vector<std::pair<int, int>> &obstacle_,
-	const std::vector<std::pair<int, int>> &hidden_) {
+    const std::vector<std::pair<int, int>> &hidden_) {
 
-	for (auto const &node : hidden_)
-		hidden.at(node.first).at(node.second) = true;
-	for (auto const &node : obstacle_) {
-		obstacle.at(node.first).at(node.second) = true;
-		hidden.at(node.first).at(node.second) = false;
-	}
-}
-
-/**
-* @brief Set the trace and change positions' status
-* @param goal_ the position of the goal
-* @return void
-*/
-void Map::setTrace(const std::pair<int, int> &position) {
-	trace.at(position.first).at(position.second) = true;
+    for (auto const &node : hidden_)
+        map.at(node.first).at(node.second) = -1.0;
+    for (auto const &node : obstacle_) {
+        map.at(node.first).at(node.second) = infinity_cost;
+    }
 }
 
 /**
@@ -90,7 +86,8 @@ void Map::setTrace(const std::pair<int, int> &position) {
 * @return void
 */
 void Map::setGoal(const std::pair<int, int> &goal_) {
-	goal = goal_;
+    map.at(goal_.first).at(goal_.second) = 1.0;
+    goal = goal_;
 }
 
 /**
@@ -99,7 +96,17 @@ void Map::setGoal(const std::pair<int, int> &goal_) {
 * @return void
 */
 void Map::setStart(const std::pair<int, int> &start_) {
-	start = start_;
+    map.at(start_.first).at(start_.second) = 2.0;
+    start = start_;
+}
+
+/**
+* @brief Set the trace and change positions' status
+* @param goal_ the position of the goal
+* @return void
+*/
+void Map::setTrace(const std::pair<int, int> &position) {
+    map.at(position.first).at(position.second) = 3.0;
 }
 
 /**
@@ -114,7 +121,7 @@ std::pair<int, int> Map::getGoal() const { return goal; }
 * @return g-value
 */
 double Map::getG(const std::pair<int, int> &position) const {
-	return gValue.at(position.first).at(position.second);
+    return gValue.at(position.first).at(position.second);
 }
 
 /**
@@ -123,7 +130,7 @@ double Map::getG(const std::pair<int, int> &position) const {
 * @return rhs-value
 */
 double Map::getRhs(const std::pair<int, int> &position) const {
-	return rhsValue.at(position.first).at(position.second);
+    return rhsValue.at(position.first).at(position.second);
 }
 
 /**
@@ -132,7 +139,7 @@ double Map::getRhs(const std::pair<int, int> &position) const {
 * @return the key value, which is the priority in next search
 */
 double Map::calculateKey(const std::pair<int, int> &position) const {
-	return std::min(getG(position), getRhs(position));
+    return std::min(getG(position), getRhs(position));
 }
 
 /**
@@ -140,14 +147,8 @@ double Map::calculateKey(const std::pair<int, int> &position) const {
 * @param position the position of interest
 * @return position's status
 */
-int Map::getStatus(const std::pair<int, int> &position) const {
-	if (obstacle.at(position.first).at(position.second)) {
-		return 1;
-	} else if (hidden.at(position.first).at(position.second)) {
-		return -1;
-	} else {
-		return 0;
-	}
+double Map::getStatus(const std::pair<int, int> &position) const {
+    return map.at(position.first).at(position.second);
 }
 
 /**
@@ -157,8 +158,8 @@ int Map::getStatus(const std::pair<int, int> &position) const {
 * @return void
 */
 void Map::setG(const std::pair<int, int> &position,
-	const double &gValue_) {
-	gValue.at(position.first).at(position.second) = gValue_;
+    const double &gValue_) {
+    gValue.at(position.first).at(position.second) = gValue_;
 }
 
 /**
@@ -168,28 +169,19 @@ void Map::setG(const std::pair<int, int> &position,
 * @return void
 */
 void Map::setRhs(const std::pair<int, int> &position,
-	const double &rhsValue_) {
-	rhsValue.at(position.first).at(position.second) = rhsValue_;
+    const double &rhsValue_) {
+    rhsValue.at(position.first).at(position.second) = rhsValue_;
 }
 
 /**
 * @brief Set the status with given position
 * @param position the position of interest
-* @param status_ an integer that represent the new status
+* @param status an integer that represent the new status
 * @return void
 */
 void Map::setStatus(const std::pair<int, int> &position,
-	const int &status_) {
-	if (status_ == 1) {
-		obstacle.at(position.first).at(position.second) = true;
-		hidden.at(position.first).at(position.second) = false;
-	} else if (status_ == -1) {
-		obstacle.at(position.first).at(position.second) = false;
-		hidden.at(position.first).at(position.second) = true;
-	} else {
-		obstacle.at(position.first).at(position.second) = false;
-		hidden.at(position.first).at(position.second) = false;
-	}
+    const double &status) {
+    map.at(position.first).at(position.second) = status;
 }
 
 /**
@@ -198,7 +190,7 @@ void Map::setStatus(const std::pair<int, int> &position,
 * @return void
 */
 void Map::setInfiniteG(const std::pair<int, int> &position) {
-	setG(position, infinity_cost);
+    setG(position, infinity_cost);
 }
 
 /**
@@ -208,16 +200,16 @@ void Map::setInfiniteG(const std::pair<int, int> &position) {
 * @return cost to travel
 */
 double Map::computeCost(const std::pair<int, int> &position,
-	const std::pair<int, int> &position_) {
-	if (!getClearance(position_)) return 5.56; //return infinity_cost;
-	if (std::abs(position.first - position_.first) +
-		std::abs(position.second - position_.second) == 1)
-		return transitional_cost;
-	if (std::abs(position.first - position_.first) +
-		std::abs(position.second - position_.second) == 2)
-		return diagonal_cost;
-	else
-		return infinity_cost;
+    const std::pair<int, int> &position_) {
+    if (!getClearance(position_)) return infinity_cost; //return infinity_cost;
+
+    if (std::abs(position.first - position_.first) +
+        std::abs(position.second - position_.second) == 1)
+        return transitional_cost;
+    if (std::abs(position.first - position_.first) +
+        std::abs(position.second - position_.second) == 2)
+        return diagonal_cost;
+    else return infinity_cost;
 }
 
 /**
@@ -226,20 +218,20 @@ double Map::computeCost(const std::pair<int, int> &position,
 * @return a set of eight neighbors that are reachable
 */
 std::vector<std::pair<int, int>> Map::findNeighbors(
-	const std::pair<int, int> & position) {
-	std::vector<std::pair<int, int>> neighbors = {};
-	std::vector<int> search_neighbor = { -1, 0, 1 };
-	for (auto const &i : search_neighbor) {
-		for (auto const &j : search_neighbor) {
-			auto neighbor = std::make_pair(position.first + i,
-				position.second + j);
-			auto cost = computeCost(position, neighbor);
-			//std::cout << "neibor: " << cost << ", " << neighbor.first << ", " << neighbor.second << std::endl;
-			if (cost == transitional_cost || cost == diagonal_cost)
-				neighbors.push_back(neighbor);
-		}
-	}
-	return neighbors;
+    const std::pair<int, int> & position) {
+    std::vector<std::pair<int, int>> neighbors = {};
+    std::vector<int> search_neighbor = { -1, 0, 1 };
+    for (auto const &i : search_neighbor) {
+        for (auto const &j : search_neighbor) {
+            auto neighbor = std::make_pair(position.first + i,
+                position.second + j);
+            auto cost = computeCost(position, neighbor);
+            //std::cout << "neibor: " << cost << ", " << neighbor.first << ", " << neighbor.second << std::endl;
+            if (cost == transitional_cost || cost == diagonal_cost)
+                neighbors.push_back(neighbor);
+        }
+    }
+    return neighbors;
 }
 
 /**
@@ -248,10 +240,10 @@ std::vector<std::pair<int, int>> Map::findNeighbors(
 * @return true if accessible and flase if not
 */
 bool Map::getClearance(const std::pair<int, int> & position) {
-	if (position.first < 0 || position.first >= size.first) return false;
-	if (position.second < 0 || position.second >= size.second) return false;
-	
-	return !obstacle.at(position.first).at(position.second);
+    if (position.first < 0 || position.first >= size.first) return false;
+    if (position.second < 0 || position.second >= size.second) return false;
+
+    return map.at(position.first).at(position.second) != infinity_cost;
 }
 
 /**
@@ -260,20 +252,20 @@ bool Map::getClearance(const std::pair<int, int> & position) {
 *
 */
 void Map::printG() {
-	std::vector<std::string> lines(size.second, "------");
-	std::cout << "g-value for shortest path:" << std::endl << " -";
-	for (auto line : lines) std::cout << line;
-	std::cout << std::endl;
-	for (auto gRow : gValue) {
-		std::cout << " | ";
-		for (auto const g : gRow) {
-			std::cout << std::setfill(' ') << std::setw(3) << g << " | ";
-		}
-		std::cout << std::endl << " -";
-		for (auto line : lines) std::cout << line;
-		std::cout << std::endl;
-	}
-	std::cout << std::endl;
+    std::vector<std::string> lines(size.second, "------");
+    std::cout << "g-value for shortest path:" << std::endl << " -";
+    for (auto line : lines) std::cout << line;
+    std::cout << std::endl;
+    for (auto gRow : gValue) {
+        std::cout << " | ";
+        for (auto const g : gRow) {
+            std::cout << std::setfill(' ') << std::setw(3) << g << " | ";
+        }
+        std::cout << std::endl << " -";
+        for (auto line : lines) std::cout << line;
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 }
 
 /**
@@ -282,20 +274,20 @@ void Map::printG() {
 *
 */
 void Map::printRhs() {
-	std::vector<std::string> lines(size.second, "------");
-	std::cout << "rhs-value for shortest path:" << std::endl << " -";
-	for (auto line : lines) std::cout << line;
-	std::cout << std::endl;
-	for (auto rhsRow : rhsValue) {
-		std::cout << " | ";
-		for (auto const rhs : rhsRow) {
-			std::cout << std::setfill(' ') << std::setw(3) << rhs << " | ";
-		}
-		std::cout << std::endl << " -";
-		for (auto line : lines) std::cout << line;
-		std::cout << std::endl;
-	}
-	std::cout << std::endl;
+    std::vector<std::string> lines(size.second, "------");
+    std::cout << "rhs-value for shortest path:" << std::endl << " -";
+    for (auto line : lines) std::cout << line;
+    std::cout << std::endl;
+    for (auto rhsRow : rhsValue) {
+        std::cout << " | ";
+        for (auto const rhs : rhsRow) {
+            std::cout << std::setfill(' ') << std::setw(3) << rhs << " | ";
+        }
+        std::cout << std::endl << " -";
+        for (auto line : lines) std::cout << line;
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 }
 
 
@@ -305,40 +297,40 @@ void Map::printRhs() {
 *
 */
 void Map::printResult() {
-	std::vector<std::string> lines(size.second, "----");
-	std::cout << "Result: " << std::endl
-		<< "start: " << start_mark << " goal: " << goal_mark << " robot: "
-		<< trace_mark << " obstacle: " << obstacle_mark << " unknown: "
-		<< hidden_mark << std::endl;
-	std::cout << " -";
-	for (auto line : lines) std::cout << line;
-	std::cout << std::endl;
+    std::vector<std::string> lines(size.second, "----");
+    std::cout << "Result: " << std::endl
+        << "start: " << start_mark << " goal: " << goal_mark << " robot: "
+        << trace_mark << " obstacle: " << obstacle_mark << " unknown: "
+        << hidden_mark << std::endl;
+    std::cout << " -";
+    for (auto line : lines) std::cout << line;
+    std::cout << std::endl;
 
-	int i = 0;
-	while (i < size.first) {
-		std::cout << " | ";
-		int j = 0;
-		while (j < size.second) {
-			std::string mark = " ";
-			if (obstacle.at(i).at(j)) {
-				mark = obstacle_mark;
-			} else if (hidden.at(i).at(j)) {
-				mark = hidden_mark;
-			} else if (trace.at(i).at(j)) {
-				mark = trace_mark;
-			} else if (goal == std::make_pair(i, j)) {
-				mark = goal_mark;
-			} else if (start == std::make_pair(i, j)) {
-				mark = start_mark;
-			}
-			std::cout << mark << " | ";
-			j++;
-		}
-		std::cout << std::endl << " -";
-		for (auto line : lines) std::cout << line;
-		std::cout << std::endl;
-		i++;
-	}
+    int i = 0;
+    while (i < size.first) {
+        std::cout << " | ";
+        int j = 0;
+        while (j < size.second) {
+            std::string mark = " ";
+            if (map.at(i).at(j) == infinity_cost) {
+                mark = obstacle_mark;
+            } else if (map.at(i).at(j) == -1.0) {
+                mark = hidden_mark;
+            } else if (map.at(i).at(j) == 3.0) {
+                mark = trace_mark;
+            } else if (goal == std::make_pair(i, j)) {
+                mark = goal_mark;
+            } else if (start == std::make_pair(i, j)) {
+                mark = start_mark;
+            }
+            std::cout << mark << " | ";
+            j++;
+        }
+        std::cout << std::endl << " -";
+        for (auto line : lines) std::cout << line;
+        std::cout << std::endl;
+        i++;
+    }
 
-	std::cout << std::endl;
+    std::cout << std::endl;
 }

@@ -42,60 +42,59 @@
 #include <utility>
 
 class Map {
-public:
-	// different costs
-	const double infinity_cost = 100.0;
-	const double diagonal_cost = 1.4;
-	const double transitional_cost = 1.0;
+ public:
+    // different costs
+    const double infinity_cost = 100.0;
+    const double open_cost = 0.0;
+    const double diagonal_cost = 1.4;
+    const double transitional_cost = 1.0;
 
-	// different status marks
-	const std::string trace_mark = ".";
-	const std::string goal_mark = "g";
-	const std::string start_mark = "s";
-	const std::string obstacle_mark = "x";
-	const std::string hidden_mark = "?";
+    // different status marks
+    const std::string trace_mark = ".";
+    const std::string goal_mark = "g";
+    const std::string start_mark = "s";
+    const std::string obstacle_mark = "x";
+    const std::string hidden_mark = "?";
 
-	// constructor and environment initializing
-	explicit Map(const int &, const int &);
-	void setObstacle(const std::vector<std::pair<int, int>> &,
-		const std::vector<std::pair<int, int>> &);
-	void setTrace(const std::pair<int, int> &);
-	void setGoal(const std::pair<int, int> &);
-	void setStart(const std::pair<int, int> &);
+    // constructor and environment initializing
+    explicit Map(const int &, const int &);
+    void setObstacle(const std::vector<std::pair<int, int>> &,
+    const std::vector<std::pair<int, int>> &);
+    void setTrace(const std::pair<int, int> &);
+    void setGoal(const std::pair<int, int> &);
+    void setStart(const std::pair<int, int> &);
 
-	// get method
-	std::pair<int, int> getGoal() const;
-	double getG(const std::pair<int, int> &) const;
-	double getRhs(const std::pair<int, int> &) const;
-	double calculateKey(const std::pair<int, int> &) const;
-	int getStatus(const std::pair<int, int> &) const;
+    // get method
+    std::pair<int, int> getGoal() const;
+    double getG(const std::pair<int, int> &) const;
+    double getRhs(const std::pair<int, int> &) const;
+    double calculateKey(const std::pair<int, int> &) const;
+    double getStatus(const std::pair<int, int> &) const;
 
-	// set method
-	void setG(const std::pair<int, int> &, const double &);
-	void setRhs(const std::pair<int, int> &, const double &);
-	void setStatus(const std::pair<int, int> &, const int &);
-	void setInfiniteG(const std::pair<int, int> &);
+    // set method
+    void setG(const std::pair<int, int> &, const double &);
+    void setRhs(const std::pair<int, int> &, const double &);
+    void setStatus(const std::pair<int, int> &, const double &);
+    void setInfiniteG(const std::pair<int, int> &);
 
-	double computeCost(const std::pair<int, int> &,
-		const std::pair<int, int> &);
+    double computeCost(const std::pair<int, int> &,
+    const std::pair<int, int> &);
 
-	std::vector<std::pair<int, int>> findNeighbors(const std::pair<int, int> &);
-	bool getClearance(const std::pair<int, int> &);
+    std::vector<std::pair<int, int>> findNeighbors(const std::pair<int, int> &);
+    bool getClearance(const std::pair<int, int> &);
 
-	// print method
-	void printG();
-	void printRhs();
-	void printResult();
+    // print method
+    void printG();
+    void printRhs();
+    void printResult();
 
-private:
-	std::pair<int, int> size;
-	std::vector<std::vector<double>> gValue;
-	std::vector<std::vector<double>> rhsValue;
-	std::vector<std::vector<bool>> obstacle;
-	std::vector<std::vector<bool>> hidden;
-	std::vector<std::vector<bool>> trace;
-	std::pair<int, int> goal;
-	std::pair<int, int> start;
+ private:
+    std::pair<int, int> size;
+    std::vector<std::vector<double>> map;
+    std::vector<std::vector<double>> gValue;
+    std::vector<std::vector<double>> rhsValue;
+    std::pair<int, int> goal;
+    std::pair<int, int> start;
 };
 
 

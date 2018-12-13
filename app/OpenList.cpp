@@ -42,11 +42,11 @@
 * @return void
 */
 void OpenList::insert(const double &new_key,
-	const std::pair<int, int> &new_node) {
-	priority_queue.push_back(std::make_tuple(
-		new_key, new_node.first, new_node.second));
-	std::push_heap(priority_queue.begin(),
-		priority_queue.end(), std::greater<>());
+    const std::pair<int, int> &new_node) {
+    priority_queue.push_back(std::make_tuple(
+        new_key, new_node.first, new_node.second));
+    std::push_heap(priority_queue.begin(),
+        priority_queue.end(), std::greater<>());
 }
 
 /**
@@ -56,16 +56,16 @@ void OpenList::insert(const double &new_key,
 * @return void
 */
 void OpenList::updateKey(const double &new_key,
-	const std::pair<int, int> &position) {
-	for (auto &node : priority_queue) {
-		if (std::get<1>(node) == position.first &&
-			std::get<2>(node) == position.second) {
-			std::get<0>(node) = new_key;
-			break;
-		}
-	}
-	std::make_heap(priority_queue.begin(),
-		priority_queue.end(), std::greater<>());
+    const std::pair<int, int> &position) {
+    for (auto &node : priority_queue) {
+        if (std::get<1>(node) == position.first &&
+            std::get<2>(node) == position.second) {
+            std::get<0>(node) = new_key;
+            break;
+        }
+    }
+    std::make_heap(priority_queue.begin(),
+        priority_queue.end(), std::greater<>());
 }
 
 /**
@@ -74,11 +74,11 @@ void OpenList::updateKey(const double &new_key,
 * @return void
 */
 void OpenList::remove(const std::pair<int, int> &node) {
-	double min_key = -1.0;
-	updateKey(min_key, node);
-	std::pop_heap(priority_queue.begin(),
-		priority_queue.end(), std::greater<>());
-	priority_queue.pop_back();
+    double min_key = -1.0;
+    updateKey(min_key, node);
+    std::pop_heap(priority_queue.begin(),
+        priority_queue.end(), std::greater<>());
+    priority_queue.pop_back();
 }
 
 /**
@@ -86,10 +86,10 @@ void OpenList::remove(const std::pair<int, int> &node) {
 * @return the top node's priority in searching and its position
 */
 std::pair<double, std::pair<int, int>> OpenList::top() const {
-	auto key = std::get<0>(priority_queue.front());
-	auto position = std::make_pair(std::get<1>(priority_queue.front()),
-		std::get<2>(priority_queue.front()));
-	return std::make_pair(key, position);
+    auto key = std::get<0>(priority_queue.front());
+    auto position = std::make_pair(std::get<1>(priority_queue.front()),
+        std::get<2>(priority_queue.front()));
+    return std::make_pair(key, position);
 }
 
 /**
@@ -97,14 +97,14 @@ std::pair<double, std::pair<int, int>> OpenList::top() const {
 * @return the top node's priority in searching and its position
 */
 std::pair<double, std::pair<int, int>> OpenList::pop() {
-	std::pop_heap(priority_queue.begin(),
-		priority_queue.end(), std::greater<>());
-	auto top_node = priority_queue.back();
-	priority_queue.pop_back();
-	auto key = std::get<0>(top_node);
-	auto position = std::make_pair(std::get<1>(top_node),
-		std::get<2>(top_node));
-	return std::make_pair(key, position);
+    std::pop_heap(priority_queue.begin(),
+        priority_queue.end(), std::greater<>());
+    auto top_node = priority_queue.back();
+    priority_queue.pop_back();
+    auto key = std::get<0>(top_node);
+    auto position = std::make_pair(std::get<1>(top_node),
+        std::get<2>(top_node));
+    return std::make_pair(key, position);
 }
 
 /**
@@ -112,10 +112,9 @@ std::pair<double, std::pair<int, int>> OpenList::pop() {
 * @return true if the node exsit and false if not
 */
 bool OpenList::find(const std::pair<int, int> &node_to_find) const {
-	for (auto const &node : priority_queue) {
-		if (std::get<1>(node) == node_to_find.first &&
-			std::get<2>(node) == node_to_find.second)
-			return true;
-	}
-	return false;
+    for (auto const &node : priority_queue) {
+        if (std::get<1>(node) == node_to_find.first &&
+            std::get<2>(node) == node_to_find.second) return true;
+    }
+    return false;
 }

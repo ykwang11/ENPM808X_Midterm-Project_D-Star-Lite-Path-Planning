@@ -38,7 +38,7 @@
 #include <utility>
 #include <algorithm>
 
-#include "TalkingRobot.h"
+#include "Robot.h"
 #include "PathPlanner.h"
 
 
@@ -51,12 +51,12 @@ int main() {
 	std::vector<std::pair<int, int>> obstacle, hidden;
 	obstacle.push_back(std::make_pair(1, 1));
 	obstacle.push_back(std::make_pair(0, 2));
-	obstacle.push_back(std::make_pair(1, 2));
+	hidden.push_back(std::make_pair(1, 2));
 	hidden.push_back(std::make_pair(2, 2));
 
 	// Initialize
 	PathPlanner planner(start, goal, obstacle, hidden);
-	TalkingRobot robot(start);
+	Robot robot(start);
 
 	// Compute shortest path in the beginning
 	planner.computeShortestPath(robot.getPosition());

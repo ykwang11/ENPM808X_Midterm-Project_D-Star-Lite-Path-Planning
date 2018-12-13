@@ -36,7 +36,7 @@
 #include "Robot.h"
 #include <gtest/gtest.h>
 
-TEST(CellRobot, testRobot) {
+TEST(RobotTest, testRobot) {
     // test robot's constructor
     Robot robot_test(std::make_pair(0, 0));
     EXPECT_EQ(robot_test.getPosition(), std::make_pair(0, 0));

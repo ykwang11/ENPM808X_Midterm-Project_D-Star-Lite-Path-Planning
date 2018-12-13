@@ -34,7 +34,6 @@
  */
 
 #include "Map.h"
-#include "Cell.h"
 #include <gtest/gtest.h>
 
 TEST(MapTest, testMapGetMethod) {

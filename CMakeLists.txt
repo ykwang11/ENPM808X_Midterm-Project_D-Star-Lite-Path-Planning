@@ -15,8 +15,7 @@ if (COVERAGE)
         include/PathPlanner.h app/PathPlanner.cpp 
         include/Map.h app/Map.cpp
         include/OpenList.h  app/OpenList.cpp
-        include/Robot.h  app/Robot.cpp
-        include/TalkingRobot.h  app/TalkingRobot.cpp)
+        include/Robot.h  app/Robot.cpp)
 
     SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
     SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")

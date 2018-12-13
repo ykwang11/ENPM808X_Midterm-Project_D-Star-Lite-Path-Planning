@@ -16,22 +16,109 @@ The design process follows the iterative process of a solo programmer (SIP) and 
 ### Eample:  
 At first, the terminal displays g values and rhs values after computing the shortest path based on A* and the visualization.  
 g-values: estamates distance to the goal  
-rhs-values: one step lookahead values based on the g values
-![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-1.png)
+rhs-values: one step lookahead values based on the g values  
+```
+g-value for shortest path:  
+ -------------------------------  
+ |   0 |   1 | 100 | 100 | 100 |  
+ -------------------------------  
+ |   1 | 100 | 100 | 4.8 | 100 |  
+ -------------------------------  
+ |   2 | 2.4 | 3.4 | 4.4 | 5.4 |  
+ -------------------------------  
+ |   3 | 3.4 | 3.8 | 4.8 | 100 |  
+ -------------------------------  
+  
+rhs-value for shortest path:  
+ -------------------------------  
+ |   0 |   1 | 100 | 5.8 | 6.2 |  
+ -------------------------------  
+ |   1 | 100 | 100 | 4.8 | 5.8 |  
+ -------------------------------  
+ |   2 | 2.4 | 3.4 | 4.4 | 5.4 |  
+ -------------------------------  
+ |   3 | 3.4 | 3.8 | 4.8 | 5.8 |  
+ -------------------------------  
+  
 
-Secondly, when the robots detects the hidden obstacle (`?` in the visualization)
-![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-2.png)
+```
+
+Secondly, when the robots detects the hidden obstacle (`?` in the visualization). 
+```
+Accumulated distance is 1  
+Result:  
+start: s goal: g robot: . obstacle: x unknown: ?  
+ ---------------------  
+ | g |   | x |   |   |  
+ ---------------------  
+ |   | x | x |   |   |  
+ ---------------------  
+ |   |   | ? | . | s |  
+ ---------------------  
+ |   |   |   |   |   |  
+ ---------------------  
+  
+```
 
 The robots realizes it is actually an obstacle (`x` in the visualization).   
 So, it re-computes the shortest path only with thoses nodes matter.  
 That is an incremental search.  
-![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-3.png)
+```
+g-value for shortest path:  
+ -------------------------------  
+ |   0 |   1 | 100 | 100 | 100 |  
+ -------------------------------  
+ |   1 | 100 | 100 | 100 | 100 |  
+ -------------------------------  
+ |   2 | 2.4 | 100 | 5.2 | 5.4 |  
+ -------------------------------  
+ |   3 | 3.4 | 3.8 | 4.8 | 100 |  
+ -------------------------------  
+  
+rhs-value for shortest path:  
+ -------------------------------  
+ |   0 |   1 | 100 | 100 | 100 |  
+ -------------------------------  
+ |   1 | 100 | 100 | 6.2 | 6.4 |  
+ -------------------------------  
+ |   2 | 2.4 | 100 | 5.2 | 6.2 |  
+ -------------------------------  
+ |   3 | 3.4 | 3.8 | 4.8 | 5.8 |  
+ -------------------------------  
+  
+Accumulated distance is 2  
+Result:  
+start: s goal: g robot: . obstacle: x unknown: ?  
+ ---------------------  
+ | g |   | x |   |   |  
+ ---------------------  
+ |   | x | x |   |   |  
+ ---------------------  
+ |   |   | x | . | s |  
+ ---------------------  
+ |   |   | . |   |   |  
+ ---------------------  
 
-At last, the robot reaches goal with the minimum cost.  
-![image](https://github.com/ykwang11/ENPM808X_Midterm-Project_D-Star-Lite-Path-Planning/blob/master/results/visual_demo/ENPM808X-4.png)
+```
 
----
-
+In the end, the robot reaches goal with the minimum cost.  
+```
+Accumulated distance is 5  
+Result:  
+start: s goal: g robot: . obstacle: x unknown: ?  
+ ---------------------  
+ | . |   | x |   |   |  
+ ---------------------  
+ | . | x | x |   |   |  
+ ---------------------  
+ |   | . | x | . | s |  
+ ---------------------  
+ |   |   | . |   |   |  
+ ---------------------  
+  
+Achieved!  
+```
+  
 ---
 ## Licence
 * MIT Licence  
@@ -86,10 +173,6 @@ cd build
 ```  
 doxygen ./Doxygen 
 ```
-
----
-## SIP Process
-[SIP process is recorded in product backlog, iteration backlog, and work log.](https://drive.google.com/drive/folders/1RUn3eqfVhPALQS88JPey561u3MOfQhIE?usp=sharing)
 
 ---
 ## Reference

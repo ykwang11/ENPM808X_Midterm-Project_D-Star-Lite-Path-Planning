@@ -23,33 +23,33 @@
  */
 
 /**
- * @file CellTest.cpp
+ * @file TalkingRobotTest.cpp
  * @author Yu-Kai Wang
  * @copyright MIT License
  *
  * @brief D* Lite Path Planning
  *
- * Test cases for the "Cell" class
+ * Test cases for the "TalkingRobot" class using GMock.
  * 
  */
-
-#include "Cell.h"
+#include "mock_Robot.h"
+#include "TalkingRobot.h"
+#include <gmock/gmock.h>
 #include <gtest/gtest.h>
-#include <string>
 
-TEST(CellTest, testCell) {
-    Cell cell_test(10000.0);
-    EXPECT_EQ(cell_test.CurrentG(), 10000.0);
-    EXPECT_EQ(cell_test.CurrentRhs(), 10000.0);
-    std::string string_test = " ";
-    EXPECT_EQ(cell_test.CurrentStatus(), string_test);
+TEST(TalkingRobotTest, testTalkingRobot) {
+    // test MockRobot
+    MockRobot robot_mock;
+    EXPECT_CALL(robot_mock, getPosition())
+        .Times(1);
+ 
+    // test talking robot's action
+    //TalkingRobot talker_test(&robot_mock);
+    //std::string output;
+    //output.append("Accumulated distance is %d\n" 1);
 
-    cell_test.UpdateG(10.0);
-    cell_test.UpdateRhs(10.0);
-    cell_test.UpdateStatus("*");
-
-    EXPECT_EQ(cell_test.CurrentG(), 10.0);
-    EXPECT_EQ(cell_test.CurrentRhs(), 10.0);
-    std::string updated_string_test = "*";
-    EXPECT_EQ(cell_test.CurrentStatus(), updated_string_test);
+    //testing::internal::CaptureStdout();
+ 
+    //std::string myoutput = testing::internal::GetCapturedStdout();
+    //EXPECT_EQ(myoutput, output);
 }
