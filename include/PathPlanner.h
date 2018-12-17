@@ -38,22 +38,21 @@
 #include "Map.h"
 #include "OpenList.h"
 
-class PathPlanner
-{
-public:
-	PathPlanner(std::pair<int, int>, std::pair<int, int>, std::vector<std::pair<int, int>>, std::vector<std::pair<int, int>>);
+class PathPlanner {
+ public:
+    PathPlanner(std::pair<int, int>, std::pair<int, int>, std::vector<std::pair<int, int>>, std::vector<std::pair<int, int>>);
 
-	void computeShortestPath(const std::pair<int, int> &);
-	void updateVertex(const std::pair<int, int> &);
-	double getMinRhs(const std::pair<int, int> &);
-	std::pair<int, int> getNextPotision(const std::pair<int, int> &);
-	bool detectHidden(const std::pair<int, int> &);
-	void setMapTrace(const std::pair<int, int> &);
-	void print();
+    void computeShortestPath(const std::pair<int, int> &);
+    void updateVertex(const std::pair<int, int> &);
+    double getMinRhs(const std::pair<int, int> &);
+    std::pair<int, int> getNextPotision(const std::pair<int, int> &);
+    bool detectHidden(const std::pair<int, int> &);
+    void setMapTrace(const std::pair<int, int> &);
+    void print();
 
-private:
-	Map map = Map(4, 5);
-	OpenList openlist;
+ private:
+    Map map = Map(5, 5);
+    OpenList openlist;
 };
 
 #endif // INCLUDE_PATHPLANNER_H_

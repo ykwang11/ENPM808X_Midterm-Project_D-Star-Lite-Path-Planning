@@ -43,43 +43,46 @@
 
 
 int main() {
-	// Declaration
-	auto goal = std::make_pair(0, 0);
-	auto start = std::make_pair(2, 4);
+    // Declaration
+    auto goal = std::make_pair(0, 0);
+    auto start = std::make_pair(2, 4);
 
-	// Setting the environment: obstacles. hidden obstacles, the goal, the robot
-	std::vector<std::pair<int, int>> obstacle, hidden;
-	obstacle.push_back(std::make_pair(1, 1));
-	obstacle.push_back(std::make_pair(0, 2));
-	hidden.push_back(std::make_pair(1, 2));
-	hidden.push_back(std::make_pair(2, 2));
+    // Setting the environment: obstacles. hidden obstacles, the goal, the robot
+    std::vector<std::pair<int, int>> obstacle, hidden;
+    obstacle.push_back(std::make_pair(0, 3));
+    obstacle.push_back(std::make_pair(1, 3));
+    obstacle.push_back(std::make_pair(2, 3));
+    obstacle.push_back(std::make_pair(3, 3));
+    hidden.push_back(std::make_pair(2, 1));
+    hidden.push_back(std::make_pair(1, 1));
+    hidden.push_back(std::make_pair(1, 2));
 
-	// Initialize
-	PathPlanner planner(start, goal, obstacle, hidden);
-	Robot robot(start);
+    // Initialize
+    PathPlanner planner(start, goal, obstacle, hidden);
+    Robot robot(start);
 
-	// Compute shortest path in the beginning
-	planner.computeShortestPath(robot.getPosition());
+    // Compute shortest path in the beginning
+    planner.computeShortestPath(robot.getPosition());
 	
-	// Keep moving until reach the goal
-	while (robot.getPosition() != goal) {
-		auto next = planner.getNextPotision(robot.getPosition());
-		robot.move(next);
-		planner.setMapTrace(robot.getPosition());
+    // Keep moving until reach the goal
+    while (robot.getPosition() != goal) {
+        auto next = planner.getNextPotision(robot.getPosition());
+        robot.move(next);
+        planner.setMapTrace(robot.getPosition());
 
-		// Print out every step in the journey
-		planner.print();
+        // Print out every step in the journey
+        planner.print();
 
-		// Detect environmental change
-		auto graphChanged =
-			planner.detectHidden(robot.getPosition());
+        // Detect environmental change
+        auto graphChanged =
+            planner.detectHidden(robot.getPosition());
 
-		// Only re-plan path when robot detects change in the environment.
-		if (graphChanged) planner.computeShortestPath(robot.getPosition());
-	}
+        // Only re-plan path when robot detects change in the environment.
+        if (graphChanged) planner.computeShortestPath(robot.getPosition());
+    }
 	
-	std::cout << "Achieved!";
-	std::cin.get();
-	return 0;
+    std::cout << "Achieved!";
+    std::cin.get();
+    return 0;
 }
 

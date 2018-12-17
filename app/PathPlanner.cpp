@@ -179,8 +179,10 @@ bool PathPlanner::detectHidden(const std::pair<int, int> &current_position) {
     // detect neibors of the current position
     for (auto const &candidate : map.findNeighbors(current_position)) {
         if (map.getStatus(candidate) == -1) {
+            std::cout << "detected" << std::endl;
             map.setStatus(candidate, 100);
             is_changed = true;
+            map.printRhs();
             // Update node's status
             updateVertex(candidate);
             // neibors of the change
@@ -188,12 +190,8 @@ bool PathPlanner::detectHidden(const std::pair<int, int> &current_position) {
                 map.findNeighbors(candidate)) {
                 updateVertex(candidate_neighbor);
             }
-            map.setRhs(candidate, map.infinity_cost);
-            map.setG(candidate, map.infinity_cost);
         }
     }
-    //std::cout << "After detection: ";
-    //map.printG();
     return is_changed;
 }
 

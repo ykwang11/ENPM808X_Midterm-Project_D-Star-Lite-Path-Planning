@@ -201,8 +201,9 @@ void Map::setInfiniteG(const std::pair<int, int> &position) {
 */
 double Map::computeCost(const std::pair<int, int> &position,
     const std::pair<int, int> &position_) {
-    if (!getClearance(position_)) return infinity_cost; //return infinity_cost;
-
+    if (!getClearance(position) || !getClearance(position_)) {
+        return infinity_cost; //return infinity_cost;
+    }
     if (std::abs(position.first - position_.first) +
         std::abs(position.second - position_.second) == 1)
         return transitional_cost;
@@ -223,12 +224,16 @@ std::vector<std::pair<int, int>> Map::findNeighbors(
     std::vector<int> search_neighbor = { -1, 0, 1 };
     for (auto const &i : search_neighbor) {
         for (auto const &j : search_neighbor) {
-            auto neighbor = std::make_pair(position.first + i,
+            if (position.first + i >= 0 &&
+                position.first + i < size.first &&
+                position.second + j >= 0 &&
+                position.second + j < size.second) 
+                neighbors.push_back(std::make_pair(position.first + i,
+                    position.second + j));
+            /*auto neighbor = std::make_pair(position.first + i,
                 position.second + j);
-            auto cost = computeCost(position, neighbor);
-            //std::cout << "neibor: " << cost << ", " << neighbor.first << ", " << neighbor.second << std::endl;
-            if (cost == transitional_cost || cost == diagonal_cost)
-                neighbors.push_back(neighbor);
+            if (getClearance(neighbor) && !(i == 0 && j==0))
+                neighbors.push_back(neighbor);*/
         }
     }
     return neighbors;
@@ -242,7 +247,7 @@ std::vector<std::pair<int, int>> Map::findNeighbors(
 bool Map::getClearance(const std::pair<int, int> & position) {
     if (position.first < 0 || position.first >= size.first) return false;
     if (position.second < 0 || position.second >= size.second) return false;
-
+    
     return map.at(position.first).at(position.second) != infinity_cost;
 }
 
